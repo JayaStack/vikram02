@@ -258,7 +258,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/40" />
         </div>
 
-        {/* change circles */}
+        {/* change circle */}
         <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-gold/5 blur-3xl" />
         <div className="absolute bottom-1/4 left-0 w-80 h-80 rounded-full bg-blue-500/5 blur-3xl" />
 
