@@ -262,8 +262,8 @@ export default function Home() {
         <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-gold/5 blur-3xl" />
         <div className="absolute bottom-1/4 left-0 w-80 h-80 rounded-full bg-blue-500/5 blur-3xl" />
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-8 md:py-10">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
             {/* Left: Text */}
             <div>
               {/* Badge */}
@@ -274,14 +274,14 @@ export default function Home() {
                 </span>
               </div>
 
-              <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-white leading-[1.08] mb-6">
+              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-4">
                 <span className="block">{COLLEGE_NAME}</span>
                 <span className="block italic font-light">Future with</span>
                 <span className="block text-gold">Industry-Ready</span>
                 <span className="block">Education.</span>
               </h1>
 
-              <p className="text-white/55 font-sans text-lg leading-relaxed max-w-lg mb-10">
+              <p className="text-white/55 font-sans text-base leading-relaxed max-w-lg mb-6">
                 {COLLEGE_NAME} is a NAAC A++ accredited autonomous college in
                 Chennai — 46 years of shaping careers across Arts, Science,
                 Commerce &amp; Technology.
@@ -290,16 +290,16 @@ export default function Home() {
               <div className="flex flex-wrap gap-3">
                 <Link
                   to="/admissions"
-                  className="bg-gold text-white px-7 py-3.5 rounded-full font-sans font-600 text-sm tracking-wide hover:bg-gold-dark hover:shadow-xl hover:-translate-y-0.5 transition-all"
+                  className="bg-gold text-white px-5 py-2.5 rounded-full font-sans font-600 text-sm tracking-wide hover:bg-gold-dark hover:shadow-xl hover:-translate-y-0.5 transition-all"
                 >
                   Apply Now →
                 </Link>
-                <button className="border border-white/20 text-white px-7 py-3.5 rounded-full font-sans text-sm hover:bg-white/8 transition-all">
+                <button className="border border-white/20 text-white px-5 py-2.5 rounded-full font-sans text-sm hover:bg-white/8 transition-all">
                   Talk to Counsellor
                 </button>
                 <Link
                   to="/campus"
-                  className="text-white/60 px-7 py-3.5 rounded-full font-sans text-sm hover:text-white transition-all flex items-center gap-2"
+                  className="text-white/60 px-5 py-2.5 rounded-full font-sans text-sm hover:text-white transition-all flex items-center gap-2"
                 >
                   <svg
                     className="w-4 h-4"
