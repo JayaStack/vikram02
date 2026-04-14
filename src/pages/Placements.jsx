@@ -139,7 +139,7 @@ export default function Placements() {
           </h1>
           <p className="text-white/50 font-sans text-lg max-w-xl">
             Our placement cell works year-round to ensure every student leaves
-            Adarsh with a career, not just a degree.
+            prepared for a career, not just a degree.
           </p>
         </div>
       </div>
@@ -269,7 +269,7 @@ export default function Placements() {
           <div className="text-center mb-12">
             <div className="section-label">Our Recruiters</div>
             <h2 className="section-heading">
-              250+ companies trust Adarsh graduates
+              250+ companies trust our graduates
             </h2>
           </div>
           <div className="flex flex-wrap gap-3 justify-center">

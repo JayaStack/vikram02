@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Sparkles, Target } from "lucide-react";
+import { COLLEGE_NAME } from "../constants/college";
 
 const values = [
   {
@@ -58,8 +59,7 @@ const leadership = [
     name: "Dr. Meena Venkataraman",
     role: "Dean — Research",
     img: "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=400",
-    quote:
-      "Research at Adarsh bridges academic rigour with real-world relevance.",
+    quote: `Research at ${COLLEGE_NAME} bridges academic rigour with real-world relevance.`,
   },
 ];
 

@@ -43,7 +43,7 @@ export default function Contact() {
       lines: ["AI, II Street, 9th Main Road", "Anna Nagar, Chennai – 600 040"],
       action: {
         label: "Get Directions",
-        href: "https://maps.google.com/?q=Anna+Adarsh+College+Chennai",
+        href: "https://maps.google.com/?q=Dr+Vikram+Agarwal+College+of+Arts+and+Science+Chennai",
       },
     },
   ];

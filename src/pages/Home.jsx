@@ -10,6 +10,7 @@ import {
   Monitor,
   Shield,
 } from "lucide-react";
+import { COLLEGE_NAME } from "../constants/college";
 
 /* ── helpers ── */
 function useScrollReveal() {
@@ -37,43 +38,29 @@ const stats = [
 
 const courses = [
   {
-    dept: "Computer Science",
-    programs: [
-      "B.Sc CS — AI & Data Science",
-      "B.Sc CS — Cyber Security",
-      "BCA",
-      "M.Sc Computer Science",
-    ],
-    color: "from-blue-950 to-navy",
-    tag: "High Demand",
+    slug: "bcom",
+    name: "B.Com",
+    desc: "Build strong fundamentals in accounting, finance, and business law.",
   },
   {
-    dept: "Commerce",
-    programs: ["B.Com General", "B.Com FinTech & AI", "B.Com Honours", "M.Com"],
-    color: "from-amber-900 to-gold-dark",
-    tag: "Industry-Ready",
+    slug: "bba",
+    name: "BBA",
+    desc: "Learn business strategy, leadership, and practical management skills.",
   },
   {
-    dept: "Management",
-    programs: [
-      "BBA",
-      "B.A. Business Economics",
-      "MBA (Lateral)",
-      "Add-on Programs",
-    ],
-    color: "from-emerald-900 to-emerald-700",
-    tag: "Leadership Track",
+    slug: "bsc-computer-science",
+    name: "B.Sc Computer Science",
+    desc: "Master programming, software engineering, and core computer science concepts.",
   },
   {
-    dept: "Arts & Science",
-    programs: [
-      "B.Sc Psychology",
-      "B.A. English",
-      "B.Sc Chemistry",
-      "M.Sc Mathematics",
-    ],
-    color: "from-purple-950 to-purple-800",
-    tag: "Research Focus",
+    slug: "bca",
+    name: "BCA",
+    desc: "Gain hands-on expertise in applications, databases, and full-stack development.",
+  },
+  {
+    slug: "ba-english",
+    name: "BA English",
+    desc: "Develop advanced communication, literary analysis, and critical thinking skills.",
   },
 ];
 
@@ -222,7 +209,7 @@ const campusImages = [
     span: "",
   },
   {
-    url: "https://images.unsplash.com/photo-1532094349884-543559059e1d?q=80&w=600",
+    url: "https://designcollaborative.com/wp-content/uploads/2024/02/11.16.22_066-scaled.webp",
     label: "Science Labs",
     span: "",
   },
@@ -239,6 +226,14 @@ export default function Home() {
   const [activeTestimonial, setActiveTestimonial] = useState(0);
 
   useEffect(() => {
+    const prevOverflowX = document.body.style.overflowX;
+    document.body.style.overflowX = "hidden";
+    return () => {
+      document.body.style.overflowX = prevOverflowX;
+    };
+  }, []);
+
+  useEffect(() => {
     const t = setInterval(
       () => setActiveTestimonial((p) => (p + 1) % testimonials.length),
       5000,
@@ -249,7 +244,7 @@ export default function Home() {
   return (
     <div className="overflow-x-hidden">
       {/* ── HERO ── */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-start overflow-hidden">
         {/* Background image + overlay */}
         <div className="absolute inset-0">
           <img
@@ -260,14 +255,14 @@ export default function Home() {
             fetchPriority="high"
             aria-hidden="true"
           />
-          <div className="absolute inset-0 bg-[#0B1437]/80" />
+          <div className="absolute inset-0 bg-black/40" />
         </div>
 
         {/* Decorative circles */}
         <div className="absolute top-1/4 right-0 w-96 h-96 rounded-full bg-gold/5 blur-3xl" />
         <div className="absolute bottom-1/4 left-0 w-80 h-80 rounded-full bg-blue-500/5 blur-3xl" />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-20">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-16">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left: Text */}
             <div>
@@ -280,15 +275,16 @@ export default function Home() {
               </div>
 
               <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl text-white leading-[1.08] mb-6">
-                Build Your
+                <span className="block">{COLLEGE_NAME}</span>
                 <span className="block italic font-light">Future with</span>
                 <span className="block text-gold">Industry-Ready</span>
                 <span className="block">Education.</span>
               </h1>
 
               <p className="text-white/55 font-sans text-lg leading-relaxed max-w-lg mb-10">
-                NAAC A++ accredited autonomous college in Chennai — 46 years of
-                shaping careers across Arts, Science, Commerce & Technology.
+                {COLLEGE_NAME} is a NAAC A++ accredited autonomous college in
+                Chennai — 46 years of shaping careers across Arts, Science,
+                Commerce &amp; Technology.
               </p>
 
               <div className="flex flex-wrap gap-3">
@@ -427,34 +423,37 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {courses.map((c, i) => (
               <Link
                 key={i}
-                to="/courses"
-                className={`reveal animate-on-scroll group relative bg-gradient-to-br ${c.color} rounded-2xl p-6 overflow-hidden hover:-translate-y-1 hover:shadow-2xl transition-all duration-300`}
+                to={`/courses/${c.slug}`}
+                className="reveal animate-on-scroll group bg-white rounded-2xl p-6 border border-navy/5 hover:border-gold/30 hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
                 style={{ transitionDelay: `${i * 0.1}s` }}
               >
-                {/* Tag */}
-                <span className="inline-block bg-white/10 text-white/80 text-[10px] font-sans tracking-widest uppercase px-3 py-1 rounded-full mb-4">
-                  {c.tag}
-                </span>
-                <h3 className="font-serif text-xl text-white font-600 mb-4">
-                  {c.dept}
+                <h3 className="font-serif text-xl text-navy font-600 mb-3">
+                  {c.name}
                 </h3>
-                <ul className="space-y-1.5">
-                  {c.programs.map((p) => (
-                    <li
-                      key={p}
-                      className="text-white/60 text-xs font-sans flex items-center gap-2"
+                <p className="text-muted text-sm font-sans leading-relaxed mb-5">
+                  {c.desc}
+                </p>
+                <div className="pt-3 border-t border-cream">
+                  <span className="inline-flex items-center gap-2 text-gold-dark font-sans text-sm font-600">
+                    View Details
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
-                      <span className="w-1 h-1 bg-gold rounded-full flex-shrink-0" />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-6 flex items-center gap-1 text-gold text-xs font-sans group-hover:gap-2 transition-all">
-                  Explore <span>→</span>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </span>
                 </div>
               </Link>
             ))}
@@ -462,7 +461,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── WHY ADARSH ── */}
+      {/* ── WHY US ── */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -498,7 +497,7 @@ export default function Home() {
 
             {/* Text + Features */}
             <div className="reveal animate-on-scroll">
-              <div className="section-label">Why Choose Adarsh</div>
+              <div className="section-label">Why Choose Us</div>
               <h2 className="section-heading mb-6">
                 Where potential meets
                 <br />
@@ -506,7 +505,7 @@ export default function Home() {
               </h2>
               <p className="text-muted font-sans leading-relaxed mb-10">
                 We don't just offer degrees — we build professionals. Every
-                program at Adarsh Institute is crafted with industry alignment,
+                program at the college is crafted with industry alignment,
                 mentorship, and outcomes in mind.
               </p>
 
@@ -544,7 +543,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 mb-8 text-center">
           <div className="section-label">Our Recruiters</div>
           <h2 className="font-serif text-3xl text-navy">
-            250+ companies hire from Adarsh every year
+            250+ companies hire our graduates every year
           </h2>
         </div>
         <div className="marquee-container relative overflow-hidden">
@@ -581,7 +580,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="reveal animate-on-scroll grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[480px]">
+          <div className="reveal animate-on-scroll grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-4">
             {campusImages.map((img, i) => (
               <div
                 key={i}
@@ -590,8 +589,7 @@ export default function Home() {
                 <img
                   src={img.url}
                   alt={img.label}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  style={{ minHeight: "180px" }}
+                  className="w-full h-56 md:h-64 object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
                 <div className="absolute bottom-4 left-4 text-white font-sans text-sm font-600">
@@ -742,7 +740,7 @@ export default function Home() {
                     EN | தமிழ் | Tanglish
                   </div>
                 </div>
-                <div className="p-5 space-y-4 bg-cream/40 min-h-[280px]">
+                <div className="p-5 space-y-4 bg-cream/40">
                   <div className="flex gap-3">
                     <div className="w-7 h-7 rounded-full bg-gold flex-shrink-0 flex items-center justify-center text-white text-xs font-serif">
                       A
@@ -769,14 +767,14 @@ export default function Home() {
                             className="w-4 h-4 text-gold"
                             strokeWidth={2}
                           />
-                          <span>B.Sc CS (AI & Data Science)</span>
+                          <span>B.Sc Computer Science</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Shield
                             className="w-4 h-4 text-gold"
                             strokeWidth={2}
                           />
-                          <span>B.Sc CS (Cyber Security)</span>
+                          <span>B.Com</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Laptop
@@ -790,7 +788,7 @@ export default function Home() {
                             className="w-4 h-4 text-gold"
                             strokeWidth={2}
                           />
-                          <span>M.Sc Computer Science</span>
+                          <span>BBA and BA English</span>
                         </div>
                       </div>
                       <div className="mt-2">Want details on any program?</div>

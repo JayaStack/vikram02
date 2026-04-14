@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { COLLEGE_NAME } from "../constants/college";
 
 const footerLinks = {
   Academics: [
@@ -69,14 +70,14 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-10 h-10 bg-gold/20 rounded-xl flex items-center justify-center font-serif font-700 text-gold text-lg">
-                A
+                D
               </div>
               <div>
                 <div className="font-serif text-xl font-600 text-white">
-                  Adarsh Institute
+                  {COLLEGE_NAME}
                 </div>
                 <div className="text-gold text-[10px] tracking-[0.2em] uppercase font-sans">
-                  Arts &amp; Sciences
+                  Arts and Science
                 </div>
               </div>
             </div>
@@ -147,8 +148,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/5 mt-14 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-sans text-white/30">
           <div>
-            © {new Date().getFullYear()} Adarsh Institute of Arts & Sciences.
-            All rights reserved.
+            © {new Date().getFullYear()} {COLLEGE_NAME}. All rights reserved.
           </div>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white/60 transition-colors">

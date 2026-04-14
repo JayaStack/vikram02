@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Newspaper } from "lucide-react";
+import { COLLEGE_NAME } from "../constants/college";
 
 const allItems = [
   {
     id: 1,
     type: "News",
     category: "Accreditation",
-    title: "Adarsh Institute Receives NAAC A++ Re-accreditation with CGPA 3.59",
+    title: `${COLLEGE_NAME} Receives NAAC A++ Re-accreditation with CGPA 3.59`,
     date: "March 15, 2025",
     img: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=800",
     excerpt:
@@ -44,7 +45,7 @@ const allItems = [
     date: "March 1, 2025",
     img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=800",
     excerpt:
-      "Adarsh launches a pioneering B.Com FinTech & AI program — the first of its kind in Anna Nagar — combining commerce, financial technology, and artificial intelligence.",
+      "The college launches a pioneering B.Com FinTech & AI program — the first of its kind in Anna Nagar — combining commerce, financial technology, and artificial intelligence.",
     featured: false,
   },
   {
@@ -107,8 +108,8 @@ export default function NewsEvents() {
             News &amp; Events
           </h1>
           <p className="text-white/50 font-sans text-lg max-w-xl">
-            The latest from Adarsh Institute — achievements, events, launches,
-            and campus happenings.
+            The latest from {COLLEGE_NAME} — achievements, events, launches, and
+            campus happenings.
           </p>
         </div>
       </div>

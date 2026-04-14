@@ -1,65 +1,82 @@
-import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { COLLEGE_NAME } from "../constants/college";
 
 const navLinks = [
-  { label: 'About', href: '/about' },
+  { label: "About", href: "/about" },
   {
-    label: 'Academics',
+    label: "Academics",
     children: [
-      { label: 'All Courses', href: '/courses' },
-      { label: 'Faculty', href: '/faculty' },
+      { label: "All Courses", href: "/courses" },
+      { label: "Faculty", href: "/faculty" },
     ],
   },
-  { label: 'Placements', href: '/placements' },
-  { label: 'Campus', href: '/campus' },
-  { label: 'Admissions', href: '/admissions' },
-  { label: 'News & Events', href: '/news' },
-  { label: 'Contact', href: '/contact' },
-]
+  { label: "Placements", href: "/placements" },
+  { label: "Campus", href: "/campus" },
+  { label: "Admissions", href: "/admissions" },
+  { label: "News & Events", href: "/news" },
+  { label: "Contact", href: "/contact" },
+];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [activeDropdown, setActiveDropdown] = useState(null)
-  const location = useLocation()
-  const isHome = location.pathname === '/'
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    const handleScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
-  useEffect(() => { setMenuOpen(false) }, [location.pathname])
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
 
-  const navBg = scrolled || !isHome
-    ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-cream'
-    : 'bg-transparent'
+  const navBg =
+    scrolled || !isHome
+      ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-cream"
+      : "bg-transparent";
 
-  const textColor = scrolled || !isHome ? 'text-navy' : 'text-white'
-  const logoColor = scrolled || !isHome ? 'text-navy' : 'text-white'
+  const textColor = scrolled || !isHome ? "text-navy" : "text-white";
+  const logoColor = scrolled || !isHome ? "text-navy" : "text-white";
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${navBg}`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${navBg}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 flex-shrink-0">
-            <div className={`w-9 h-9 rounded-lg flex items-center justify-center font-serif font-700 text-lg transition-all ${scrolled || !isHome ? 'bg-navy text-gold' : 'bg-white/20 text-white border border-white/30'}`}>
-              A
+            <div
+              className={`w-9 h-9 rounded-lg flex items-center justify-center font-serif font-700 text-lg transition-all ${scrolled || !isHome ? "bg-navy text-gold" : "bg-white/20 text-white border border-white/30"}`}
+            >
+              D
             </div>
-            <div>
-              <div className={`font-serif text-lg font-600 leading-tight transition-colors ${logoColor}`}>
-                Adarsh Institute
+            <div className="min-w-0">
+              <div
+                className={`hidden sm:block font-serif text-lg font-600 leading-tight transition-colors max-w-[220px] truncate ${logoColor}`}
+              >
+                {COLLEGE_NAME}
               </div>
-              <div className={`font-sans text-[10px] tracking-[0.15em] uppercase transition-colors ${scrolled || !isHome ? 'text-gold' : 'text-white/70'}`}>
-                Arts &amp; Sciences
+              <div
+                className={`hidden sm:block font-sans text-[10px] tracking-[0.15em] uppercase transition-colors max-w-[220px] truncate ${scrolled || !isHome ? "text-gold" : "text-white/70"}`}
+              >
+                Arts and Science
+              </div>
+              <div
+                className={`sm:hidden font-sans text-sm font-700 tracking-[0.12em] uppercase transition-colors ${logoColor}`}
+              >
+                DVACAS
               </div>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-1">
+          <nav className="hidden lg:flex items-center gap-1 ml-6 xl:ml-8">
             {navLinks.map((link) =>
               link.children ? (
                 <div
@@ -68,13 +85,27 @@ export default function Navbar() {
                   onMouseEnter={() => setActiveDropdown(link.label)}
                   onMouseLeave={() => setActiveDropdown(null)}
                 >
-                  <button className={`flex items-center gap-1 px-4 py-2 rounded-full text-sm font-sans font-500 transition-all hover:bg-white/10 ${textColor}`}>
+                  <button
+                    className={`flex items-center gap-1 px-4 py-2 rounded-full text-sm font-sans font-500 transition-all hover:bg-white/10 ${textColor}`}
+                  >
                     {link.label}
-                    <svg className="w-3.5 h-3.5 mt-0.5 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <svg
+                      className="w-3.5 h-3.5 mt-0.5 opacity-60"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 9l-7 7-7-7"
+                      />
                     </svg>
                   </button>
-                  <div className={`absolute top-full left-0 mt-1 w-44 bg-white rounded-2xl shadow-xl border border-navy/5 py-2 transition-all duration-200 ${activeDropdown === link.label ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'}`}>
+                  <div
+                    className={`absolute top-full left-0 mt-1 w-44 bg-white rounded-2xl shadow-xl border border-navy/5 py-2 transition-all duration-200 ${activeDropdown === link.label ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"}`}
+                  >
                     {link.children.map((child) => (
                       <Link
                         key={child.label}
@@ -90,19 +121,19 @@ export default function Navbar() {
                 <Link
                   key={link.label}
                   to={link.href}
-                  className={`px-4 py-2 rounded-full text-sm font-sans font-500 transition-all hover:bg-white/10 ${textColor} ${location.pathname === link.href ? 'opacity-100' : 'opacity-80 hover:opacity-100'}`}
+                  className={`px-4 py-2 rounded-full text-sm font-sans font-500 transition-all hover:bg-white/10 ${textColor} ${location.pathname === link.href ? "opacity-100" : "opacity-80 hover:opacity-100"}`}
                 >
                   {link.label}
                 </Link>
-              )
+              ),
             )}
           </nav>
 
           {/* CTA */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center ml-4">
             <Link
               to="/admissions"
-              className="bg-gold text-white px-5 py-2.5 rounded-full text-sm font-sans font-600 tracking-wide transition-all hover:bg-gold-dark hover:shadow-lg hover:-translate-y-0.5"
+              className="px-5 py-2 rounded-full bg-[#C9973A] text-white font-medium hover:scale-105 transition"
             >
               Apply Now
             </Link>
@@ -111,16 +142,36 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled || !isHome ? 'text-navy hover:bg-cream' : 'text-white hover:bg-white/10'}`}
+            className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled || !isHome ? "text-navy hover:bg-cream" : "text-white hover:bg-white/10"}`}
             aria-label="Toggle menu"
           >
             {menuOpen ? (
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             ) : (
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
               </svg>
             )}
           </button>
@@ -128,23 +179,35 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`lg:hidden transition-all duration-300 overflow-hidden ${menuOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
+      <div
+        className={`lg:hidden transition-all duration-300 overflow-hidden ${menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"}`}
+      >
         <div className="bg-white border-t border-cream px-4 py-4 space-y-1">
           {navLinks.map((link) =>
             link.children ? (
               <div key={link.label}>
-                <div className="px-4 py-2 text-xs font-sans font-600 tracking-widest uppercase text-gold">{link.label}</div>
+                <div className="px-4 py-2 text-xs font-sans font-600 tracking-widest uppercase text-gold">
+                  {link.label}
+                </div>
                 {link.children.map((child) => (
-                  <Link key={child.label} to={child.href} className="block px-6 py-2.5 text-sm text-navy/80 font-sans hover:text-navy">
+                  <Link
+                    key={child.label}
+                    to={child.href}
+                    className="block px-6 py-2.5 text-sm text-navy/80 font-sans hover:text-navy"
+                  >
                     {child.label}
                   </Link>
                 ))}
               </div>
             ) : (
-              <Link key={link.label} to={link.href} className="block px-4 py-2.5 text-sm text-navy font-sans font-500 rounded-xl hover:bg-cream">
+              <Link
+                key={link.label}
+                to={link.href}
+                className="block px-4 py-2.5 text-sm text-navy font-sans font-500 rounded-xl hover:bg-cream"
+              >
                 {link.label}
               </Link>
-            )
+            ),
           )}
           <div className="pt-3 border-t border-cream">
             <Link
@@ -157,5 +220,5 @@ export default function Navbar() {
         </div>
       </div>
     </header>
-  )
+  );
 }

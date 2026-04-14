@@ -258,7 +258,7 @@ export default function Campus() {
                 <br />5 min from Anna Nagar Tower Metro Station
               </p>
               <a
-                href="https://maps.google.com/?q=Anna+Adarsh+College+Chennai"
+                href="https://maps.google.com/?q=Dr+Vikram+Agarwal+College+of+Arts+and+Science+Chennai"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 bg-gold text-white px-6 py-3 rounded-full text-sm font-sans font-600 hover:bg-gold-dark transition-all"

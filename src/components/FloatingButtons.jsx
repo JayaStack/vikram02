@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, Send, X } from "lucide-react";
 import { FaWhatsapp, FaRobot } from "react-icons/fa";
+import { COLLEGE_NAME } from "../constants/college";
 
 const initialMessages = [
   {
@@ -179,7 +180,7 @@ export default function FloatingButtons() {
 
       {/* WhatsApp */}
       <a
-        href="https://wa.me/914426212089?text=Hi%2C%20I%27m%20interested%20in%20admissions%20at%20Adarsh%20Institute"
+        href={`https://wa.me/914426212089?text=${encodeURIComponent(`Hi, I'm interested in admissions at ${COLLEGE_NAME}`)}`}
         target="_blank"
         rel="noreferrer"
         className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:-translate-y-0.5 transition-all"

@@ -2,45 +2,217 @@ import { useParams, Link } from "react-router-dom";
 import { Building2, Clock3, Users } from "lucide-react";
 
 const courseData = {
-  "bsc-cs-ai": {
-    name: "B.Sc Computer Science — AI & Data Science",
+  bcom: {
+    name: "B.Com",
+    dept: "Commerce",
+    level: "UG",
+    duration: "3 Years (6 Semesters)",
+    seats: 80,
+    affiliation: "University of Madras",
+    overview:
+      "A foundational commerce program focused on accounting, finance, taxation, and business law. Students gain practical knowledge through case studies and project-based learning for careers in corporate finance and banking.",
+    eligibility: [
+      "Pass in Class XII in any stream",
+      "Minimum 50% aggregate marks (45% for SC/ST)",
+      "Admission based on merit and seat availability",
+    ],
+    curriculum: [
+      {
+        sem: "Sem I–II",
+        topics:
+          "Financial Accounting, Business Economics, Business Law, English",
+      },
+      {
+        sem: "Sem III–IV",
+        topics: "Corporate Accounting, Cost Accounting, Banking, Taxation",
+      },
+      {
+        sem: "Sem V–VI",
+        topics: "Auditing, Financial Management, Entrepreneurship, Project",
+      },
+    ],
+    careers: [
+      "Accountant",
+      "Tax Associate",
+      "Banking Executive",
+      "Finance Analyst",
+      "Entrepreneur",
+    ],
+    fees: "₹22,000 / year",
+    placementRate: "92%",
+    avgPackage: "₹3.9 LPA",
+    topRecruiters: ["HDFC Bank", "Axis Bank", "Deloitte", "TCS", "ICICI"],
+  },
+  bba: {
+    name: "BBA",
+    dept: "Management",
+    level: "UG",
+    duration: "3 Years (6 Semesters)",
+    seats: 60,
+    affiliation: "University of Madras",
+    overview:
+      "BBA develops strong business fundamentals in management, marketing, operations, and leadership. The program combines classroom learning with practical exposure through presentations, case studies, and internships.",
+    eligibility: [
+      "Pass in Class XII in any stream",
+      "Minimum 50% aggregate marks (45% for SC/ST)",
+      "Admission based on merit and seat availability",
+    ],
+    curriculum: [
+      {
+        sem: "Sem I–II",
+        topics:
+          "Principles of Management, Business Communication, Economics, Accounting",
+      },
+      {
+        sem: "Sem III–IV",
+        topics:
+          "Marketing, Human Resources, Statistics, Organizational Behaviour",
+      },
+      {
+        sem: "Sem V–VI",
+        topics: "Operations, Strategy, Entrepreneurship, Internship + Project",
+      },
+    ],
+    careers: [
+      "Business Analyst",
+      "Marketing Executive",
+      "HR Associate",
+      "Operations Coordinator",
+      "Management Trainee",
+    ],
+    fees: "₹24,000 / year",
+    placementRate: "93%",
+    avgPackage: "₹4.1 LPA",
+    topRecruiters: ["Accenture", "HDFC Bank", "Deloitte", "Cognizant", "TVS"],
+  },
+  "bsc-computer-science": {
+    name: "B.Sc Computer Science",
     dept: "Science",
     level: "UG",
     duration: "3 Years (6 Semesters)",
     seats: 60,
     affiliation: "University of Madras",
     overview:
-      "A cutting-edge undergraduate program that combines core computer science fundamentals with deep specialisation in Artificial Intelligence, Machine Learning, and Data Science. Graduates are equipped for roles in AI engineering, data analytics, and software development at leading tech companies.",
+      "A core computer science program covering programming, data structures, databases, networking, and software engineering. Students build practical coding and problem-solving skills through labs, mini-projects, and internships.",
     eligibility: [
       "Pass in Class XII with Mathematics/Computer Science",
       "Minimum 50% aggregate marks (45% for SC/ST)",
-      "Appeared in TNEA counselling or direct admission",
+      "Admission based on merit and seat availability",
     ],
     curriculum: [
       {
-        sem: "Sem I–II",
-        topics: "Python, Data Structures, Discrete Math, DBMS, Web Basics",
+        sem: "Sem I-II",
+        topics: "Programming in C, Python, Mathematics, Digital Fundamentals",
       },
       {
-        sem: "Sem III–IV",
-        topics: "Machine Learning, Statistics, Java, OS, Computer Networks",
+        sem: "Sem III-IV",
+        topics:
+          "Data Structures, Java, DBMS, Operating Systems, Web Development",
       },
       {
-        sem: "Sem V–VI",
-        topics: "Deep Learning, NLP, Cloud Computing, Project + Internship",
+        sem: "Sem V-VI",
+        topics:
+          "Computer Networks, Software Engineering, Electives, Project + Internship",
       },
     ],
     careers: [
-      "AI/ML Engineer",
-      "Data Scientist",
       "Software Developer",
-      "Business Analyst",
-      "Research Associate",
+      "Full-Stack Developer",
+      "QA Engineer",
+      "System Analyst",
+      "Technical Support Engineer",
     ],
     fees: "₹28,000 / year",
-    placementRate: "96%",
-    avgPackage: "₹5.8 LPA",
-    topRecruiters: ["Zoho", "TCS", "Infosys", "IBM", "Freshworks", "HCL"],
+    placementRate: "95%",
+    avgPackage: "₹5.2 LPA",
+    topRecruiters: ["TCS", "Infosys", "Zoho", "Wipro", "Freshworks", "HCL"],
+  },
+  bca: {
+    name: "BCA",
+    dept: "Science",
+    level: "UG",
+    duration: "3 Years (6 Semesters)",
+    seats: 60,
+    affiliation: "University of Madras",
+    overview:
+      "BCA offers a strong application-oriented curriculum in programming, software development, and database technologies. The program prepares students for IT services, product companies, and startup roles.",
+    eligibility: [
+      "Pass in Class XII in any stream",
+      "Minimum 50% aggregate marks (45% for SC/ST)",
+      "Admission based on merit and seat availability",
+    ],
+    curriculum: [
+      {
+        sem: "Sem I-II",
+        topics:
+          "Programming in C, Computer Fundamentals, Mathematics, Office Tools",
+      },
+      {
+        sem: "Sem III-IV",
+        topics: "Java, DBMS, Data Structures, Web Technologies",
+      },
+      {
+        sem: "Sem V-VI",
+        topics: "Mobile App Development, Cloud Basics, Internship + Project",
+      },
+    ],
+    careers: [
+      "Software Developer",
+      "Web Developer",
+      "Application Support Engineer",
+      "Database Administrator",
+      "UI Developer",
+    ],
+    fees: "₹26,000 / year",
+    placementRate: "93%",
+    avgPackage: "₹4.3 LPA",
+    topRecruiters: ["Cognizant", "TCS", "Wipro", "Infosys", "HCL"],
+  },
+  "ba-english": {
+    name: "BA English",
+    dept: "Arts",
+    level: "UG",
+    duration: "3 Years (6 Semesters)",
+    seats: 40,
+    affiliation: "University of Madras",
+    overview:
+      "BA English strengthens language, literature, and critical analysis skills. Students explore global literature, communication, and writing practices useful for media, education, and corporate communication careers.",
+    eligibility: [
+      "Pass in Class XII in any stream",
+      "Minimum 50% aggregate marks (45% for SC/ST)",
+      "Admission based on merit and seat availability",
+    ],
+    curriculum: [
+      {
+        sem: "Sem I-II",
+        topics: "British Literature, Grammar, Spoken English, Language Skills",
+      },
+      {
+        sem: "Sem III-IV",
+        topics: "American Literature, Indian Writing in English, Linguistics",
+      },
+      {
+        sem: "Sem V-VI",
+        topics: "Literary Criticism, Communication, Journalism Basics, Project",
+      },
+    ],
+    careers: [
+      "Content Writer",
+      "Editor",
+      "Teacher",
+      "Communications Executive",
+      "Media Professional",
+    ],
+    fees: "₹20,000 / year",
+    placementRate: "90%",
+    avgPackage: "₹3.6 LPA",
+    topRecruiters: [
+      "Sutherland",
+      "Tech Mahindra",
+      "Byju's",
+      "HCL",
+      "Infosys BPM",
+    ],
   },
 };
 

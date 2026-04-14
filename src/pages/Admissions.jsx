@@ -43,7 +43,7 @@ const steps = [
   {
     num: "06",
     title: "Enrolment Complete",
-    desc: "Welcome to Adarsh! Collect your student ID, course materials, and join the orientation program.",
+    desc: "Welcome to the college! Collect your student ID, course materials, and join the orientation program.",
     icon: GraduationCap,
   },
 ];
@@ -59,7 +59,7 @@ const importantDates = [
 
 const faqs = [
   {
-    q: "Is Adarsh Institute co-educational?",
+    q: "Is the college co-educational?",
     a: "Yes, the institute now welcomes both male and female students across all programs from the 2025–26 academic year.",
   },
   {
