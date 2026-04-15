@@ -1,254 +1,27 @@
 import { useParams, Link } from "react-router-dom";
 import { Building2, Clock3, Users } from "lucide-react";
-
-const courseData = {
-  bcom: {
-    name: "B.Com",
-    dept: "Commerce",
-    level: "UG",
-    duration: "3 Years (6 Semesters)",
-    seats: 80,
-    affiliation: "University of Madras",
-    overview:
-      "A foundational commerce program focused on accounting, finance, taxation, and business law. Students gain practical knowledge through case studies and project-based learning for careers in corporate finance and banking.",
-    eligibility: [
-      "Pass in Class XII in any stream",
-      "Minimum 50% aggregate marks (45% for SC/ST)",
-      "Admission based on merit and seat availability",
-    ],
-    curriculum: [
-      {
-        sem: "Sem I–II",
-        topics:
-          "Financial Accounting, Business Economics, Business Law, English",
-      },
-      {
-        sem: "Sem III–IV",
-        topics: "Corporate Accounting, Cost Accounting, Banking, Taxation",
-      },
-      {
-        sem: "Sem V–VI",
-        topics: "Auditing, Financial Management, Entrepreneurship, Project",
-      },
-    ],
-    careers: [
-      "Accountant",
-      "Tax Associate",
-      "Banking Executive",
-      "Finance Analyst",
-      "Entrepreneur",
-    ],
-    fees: "₹22,000 / year",
-    placementRate: "92%",
-    avgPackage: "₹3.9 LPA",
-    topRecruiters: ["HDFC Bank", "Axis Bank", "Deloitte", "TCS", "ICICI"],
-  },
-  bba: {
-    name: "BBA",
-    dept: "Management",
-    level: "UG",
-    duration: "3 Years (6 Semesters)",
-    seats: 60,
-    affiliation: "University of Madras",
-    overview:
-      "BBA develops strong business fundamentals in management, marketing, operations, and leadership. The program combines classroom learning with practical exposure through presentations, case studies, and internships.",
-    eligibility: [
-      "Pass in Class XII in any stream",
-      "Minimum 50% aggregate marks (45% for SC/ST)",
-      "Admission based on merit and seat availability",
-    ],
-    curriculum: [
-      {
-        sem: "Sem I–II",
-        topics:
-          "Principles of Management, Business Communication, Economics, Accounting",
-      },
-      {
-        sem: "Sem III–IV",
-        topics:
-          "Marketing, Human Resources, Statistics, Organizational Behaviour",
-      },
-      {
-        sem: "Sem V–VI",
-        topics: "Operations, Strategy, Entrepreneurship, Internship + Project",
-      },
-    ],
-    careers: [
-      "Business Analyst",
-      "Marketing Executive",
-      "HR Associate",
-      "Operations Coordinator",
-      "Management Trainee",
-    ],
-    fees: "₹24,000 / year",
-    placementRate: "93%",
-    avgPackage: "₹4.1 LPA",
-    topRecruiters: ["Accenture", "HDFC Bank", "Deloitte", "Cognizant", "TVS"],
-  },
-  "bsc-computer-science": {
-    name: "B.Sc Computer Science",
-    dept: "Science",
-    level: "UG",
-    duration: "3 Years (6 Semesters)",
-    seats: 60,
-    affiliation: "University of Madras",
-    overview:
-      "A core computer science program covering programming, data structures, databases, networking, and software engineering. Students build practical coding and problem-solving skills through labs, mini-projects, and internships.",
-    eligibility: [
-      "Pass in Class XII with Mathematics/Computer Science",
-      "Minimum 50% aggregate marks (45% for SC/ST)",
-      "Admission based on merit and seat availability",
-    ],
-    curriculum: [
-      {
-        sem: "Sem I-II",
-        topics: "Programming in C, Python, Mathematics, Digital Fundamentals",
-      },
-      {
-        sem: "Sem III-IV",
-        topics:
-          "Data Structures, Java, DBMS, Operating Systems, Web Development",
-      },
-      {
-        sem: "Sem V-VI",
-        topics:
-          "Computer Networks, Software Engineering, Electives, Project + Internship",
-      },
-    ],
-    careers: [
-      "Software Developer",
-      "Full-Stack Developer",
-      "QA Engineer",
-      "System Analyst",
-      "Technical Support Engineer",
-    ],
-    fees: "₹28,000 / year",
-    placementRate: "95%",
-    avgPackage: "₹5.2 LPA",
-    topRecruiters: ["TCS", "Infosys", "Zoho", "Wipro", "Freshworks", "HCL"],
-  },
-  bca: {
-    name: "BCA",
-    dept: "Science",
-    level: "UG",
-    duration: "3 Years (6 Semesters)",
-    seats: 60,
-    affiliation: "University of Madras",
-    overview:
-      "BCA offers a strong application-oriented curriculum in programming, software development, and database technologies. The program prepares students for IT services, product companies, and startup roles.",
-    eligibility: [
-      "Pass in Class XII in any stream",
-      "Minimum 50% aggregate marks (45% for SC/ST)",
-      "Admission based on merit and seat availability",
-    ],
-    curriculum: [
-      {
-        sem: "Sem I-II",
-        topics:
-          "Programming in C, Computer Fundamentals, Mathematics, Office Tools",
-      },
-      {
-        sem: "Sem III-IV",
-        topics: "Java, DBMS, Data Structures, Web Technologies",
-      },
-      {
-        sem: "Sem V-VI",
-        topics: "Mobile App Development, Cloud Basics, Internship + Project",
-      },
-    ],
-    careers: [
-      "Software Developer",
-      "Web Developer",
-      "Application Support Engineer",
-      "Database Administrator",
-      "UI Developer",
-    ],
-    fees: "₹26,000 / year",
-    placementRate: "93%",
-    avgPackage: "₹4.3 LPA",
-    topRecruiters: ["Cognizant", "TCS", "Wipro", "Infosys", "HCL"],
-  },
-  "ba-english": {
-    name: "BA English",
-    dept: "Arts",
-    level: "UG",
-    duration: "3 Years (6 Semesters)",
-    seats: 40,
-    affiliation: "University of Madras",
-    overview:
-      "BA English strengthens language, literature, and critical analysis skills. Students explore global literature, communication, and writing practices useful for media, education, and corporate communication careers.",
-    eligibility: [
-      "Pass in Class XII in any stream",
-      "Minimum 50% aggregate marks (45% for SC/ST)",
-      "Admission based on merit and seat availability",
-    ],
-    curriculum: [
-      {
-        sem: "Sem I-II",
-        topics: "British Literature, Grammar, Spoken English, Language Skills",
-      },
-      {
-        sem: "Sem III-IV",
-        topics: "American Literature, Indian Writing in English, Linguistics",
-      },
-      {
-        sem: "Sem V-VI",
-        topics: "Literary Criticism, Communication, Journalism Basics, Project",
-      },
-    ],
-    careers: [
-      "Content Writer",
-      "Editor",
-      "Teacher",
-      "Communications Executive",
-      "Media Professional",
-    ],
-    fees: "₹20,000 / year",
-    placementRate: "90%",
-    avgPackage: "₹3.6 LPA",
-    topRecruiters: [
-      "Sutherland",
-      "Tech Mahindra",
-      "Byju's",
-      "HCL",
-      "Infosys BPM",
-    ],
-  },
-};
-
-const defaultCourse = {
-  name: "Course Details",
-  dept: "Science",
-  level: "UG",
-  duration: "3 Years",
-  seats: 60,
-  affiliation: "University of Madras",
-  overview:
-    "This program provides a comprehensive foundation in the subject area with industry-relevant curriculum and excellent placement support.",
-  eligibility: [
-    "Pass in Class XII with relevant subjects",
-    "Minimum 50% aggregate marks",
-  ],
-  curriculum: [
-    { sem: "Sem I–II", topics: "Foundation courses and core subjects" },
-    { sem: "Sem III–IV", topics: "Intermediate specialisation and electives" },
-    { sem: "Sem V–VI", topics: "Advanced topics, internship and project" },
-  ],
-  careers: ["Industry Professional", "Researcher", "Entrepreneur"],
-  fees: "On Request",
-  placementRate: "92%",
-  avgPackage: "₹4.5 LPA",
-  topRecruiters: ["TCS", "Infosys", "Wipro", "HCL", "Deloitte"],
-};
+import { courses } from "../constants/courses";
 
 export default function CourseDetail() {
   const { slug } = useParams();
-  const course = courseData[slug] || {
-    ...defaultCourse,
-    name:
-      slug?.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) ||
-      "Course Details",
-  };
+  const course = courses.find((item) => item.slug === slug);
+
+  if (!course) {
+    return (
+      <div className="min-h-screen bg-cream pt-32 px-6">
+        <div className="max-w-3xl mx-auto bg-white border border-navy/5 rounded-2xl p-8 text-center">
+          <h1 className="font-serif text-3xl text-navy mb-3">Course Not Found</h1>
+          <p className="text-muted font-sans mb-6">
+            The requested program is unavailable. Please explore the available
+            programs below.
+          </p>
+          <Link to="/courses" className="btn-primary inline-block">
+            View All Courses
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-cream">
@@ -277,10 +50,10 @@ export default function CourseDetail() {
           </Link>
           <div className="flex gap-2 mb-4">
             <span className="bg-gold/20 text-gold text-xs font-sans tracking-widest uppercase px-3 py-1 rounded-full">
-              {course.level}
+              UG
             </span>
             <span className="bg-white/10 text-white/60 text-xs font-sans tracking-widest uppercase px-3 py-1 rounded-full">
-              {course.dept}
+              {course.department}
             </span>
           </div>
           <h1 className="font-serif text-4xl md:text-5xl text-white mb-4 max-w-3xl">
@@ -313,7 +86,7 @@ export default function CourseDetail() {
                 Program Overview
               </h2>
               <p className="text-muted font-sans leading-relaxed">
-                {course.overview}
+                {course.shortDescription}
               </p>
             </div>
 
@@ -322,48 +95,41 @@ export default function CourseDetail() {
               <h2 className="font-serif text-2xl text-navy mb-5">
                 Eligibility Criteria
               </h2>
-              <ul className="space-y-3">
-                {course.eligibility.map((e, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-3 text-sm font-sans text-navy/80"
+              <div className="flex items-start gap-3 text-sm font-sans text-navy/80">
+                <span className="w-5 h-5 rounded-full bg-gold/15 text-gold flex-shrink-0 flex items-center justify-center mt-0.5">
+                  <svg
+                    className="w-3 h-3"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    <span className="w-5 h-5 rounded-full bg-gold/15 text-gold flex-shrink-0 flex items-center justify-center mt-0.5">
-                      <svg
-                        className="w-3 h-3"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2.5}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                    </span>
-                    {e}
-                  </li>
-                ))}
-              </ul>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2.5}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </span>
+                {course.eligibility}
+              </div>
             </div>
 
             {/* Curriculum */}
             <div className="bg-white rounded-2xl p-8 border border-navy/5">
               <h2 className="font-serif text-2xl text-navy mb-6">
-                Curriculum Highlights
+                Program Highlights
               </h2>
               <div className="space-y-4">
-                {course.curriculum.map((c, i) => (
+                {course.highlights.map((highlight, i) => (
                   <div key={i} className="flex gap-5 items-start">
                     <div className="w-24 flex-shrink-0">
                       <span className="bg-navy/5 text-navy/60 text-xs font-sans font-600 px-3 py-1.5 rounded-full block text-center">
-                        {c.sem}
+                        Highlight {i + 1}
                       </span>
                     </div>
                     <div className="flex-1 pt-1 text-sm font-sans text-muted border-l border-dashed border-navy/10 pl-5">
-                      {c.topics}
+                      {highlight}
                     </div>
                   </div>
                 ))}
@@ -436,7 +202,7 @@ export default function CourseDetail() {
                 Annual Fee
               </div>
               <div className="font-serif text-3xl text-navy font-600">
-                {course.fees}
+                {course.fee}
               </div>
               <div className="text-muted text-xs font-sans mt-1">
                 Scholarships available for merit & EWS

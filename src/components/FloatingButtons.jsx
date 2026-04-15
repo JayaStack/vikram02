@@ -19,7 +19,7 @@ const quickReplies = [
 
 const aiResponses = {
   "Tell me about courses":
-    "We offer 20+ UG & PG programs in Arts, Science, Commerce & Management. Popular picks: B.Sc Computer Science, B.Com FinTech & AI, BBA, and B.Sc Psychology. Want details on any specific program?",
+    "We currently offer 5 undergraduate programs: B.A – English, B.Sc – Psychology, BBA – Business Administration, B.Com – General, and B.Com – Accounting & Finance. Want details on any specific program?",
   "Admissions process":
     "Admissions are open! Here's how it works:\n1. Fill out the online application\n2. Submit documents\n3. Counselling & seat allotment\n4. Fee payment & enrolment\n\nShall I connect you to the admissions team?",
   "Fee structure":

@@ -18,7 +18,7 @@ const placementStats = [
 const testimonials = [
   {
     name: "Kavya Sundaresan",
-    batch: "B.Sc CS 2024",
+    batch: "B.Sc – Psychology 2024",
     company: "Freshworks",
     package: "₹5.4 LPA",
     img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200",
@@ -27,7 +27,7 @@ const testimonials = [
   },
   {
     name: "Mohammed Imran",
-    batch: "BBA 2024",
+    batch: "BBA – Business Administration 2024",
     company: "HDFC Bank",
     package: "₹4.2 LPA",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200",
@@ -36,7 +36,7 @@ const testimonials = [
   },
   {
     name: "Nithya Krishnan",
-    batch: "B.Com Honours 2023",
+    batch: "B.Com – General 2023",
     company: "Deloitte",
     package: "₹5.8 LPA",
     img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200",
@@ -45,7 +45,7 @@ const testimonials = [
   },
   {
     name: "Arun Balaji",
-    batch: "BCA 2024",
+    batch: "B.Com – Accounting & Finance 2024",
     company: "TCS",
     package: "₹3.6 LPA",
     img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200",

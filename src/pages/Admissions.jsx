@@ -286,11 +286,11 @@ export default function Admissions() {
                     className="w-full bg-cream border border-navy/10 rounded-xl px-4 py-3 text-sm font-sans text-navy outline-none focus:border-gold/50 transition-colors"
                   >
                     <option value="">Select a program...</option>
-                    <option>B.Sc Computer Science</option>
-                    <option>B.Com FinTech & AI</option>
-                    <option>BBA</option>
-                    <option>BCA</option>
-                    <option>B.Sc Psychology</option>
+                    <option>B.A – English</option>
+                    <option>B.Sc – Psychology</option>
+                    <option>BBA – Business Administration</option>
+                    <option>B.Com – General</option>
+                    <option>B.Com – Accounting & Finance</option>
                     <option>Other</option>
                   </select>
                 </div>

@@ -5,12 +5,10 @@ import {
   Briefcase,
   Building2,
   GraduationCap,
-  Laptop,
   MessageCircle,
-  Monitor,
-  Shield,
 } from "lucide-react";
 import { COLLEGE_NAME } from "../constants/college";
+import { courses } from "../constants/courses";
 
 /* ── helpers ── */
 function useScrollReveal() {
@@ -34,34 +32,6 @@ const stats = [
   { value: "94%", label: "Placement Rate", icon: Briefcase },
   { value: "250+", label: "Recruiter Partners", icon: Building2 },
   { value: "46 yrs", label: "Of Excellence", icon: Award },
-];
-
-const courses = [
-  {
-    slug: "bcom",
-    name: "B.Com",
-    desc: "Build strong fundamentals in accounting, finance, and business law.",
-  },
-  {
-    slug: "bba",
-    name: "BBA",
-    desc: "Learn business strategy, leadership, and practical management skills.",
-  },
-  {
-    slug: "bsc-computer-science",
-    name: "B.Sc Computer Science",
-    desc: "Master programming, software engineering, and core computer science concepts.",
-  },
-  {
-    slug: "bca",
-    name: "BCA",
-    desc: "Gain hands-on expertise in applications, databases, and full-stack development.",
-  },
-  {
-    slug: "ba-english",
-    name: "BA English",
-    desc: "Develop advanced communication, literary analysis, and critical thinking skills.",
-  },
 ];
 
 const recruiters = [
@@ -94,7 +64,7 @@ const recruiters = [
 const testimonials = [
   {
     name: "Priya Krishnamurthy",
-    batch: "B.Com 2023",
+    batch: "B.Com – General 2023",
     company: "Deloitte USI",
     quote:
       "The placement cell was incredible. I got placed before graduation with a package I didn't even dream of. The faculty genuinely cares about your career.",
@@ -102,7 +72,7 @@ const testimonials = [
   },
   {
     name: "Arjun Selvam",
-    batch: "B.Sc CS 2023",
+    batch: "B.Sc Psychology 2023",
     company: "Zoho Corp",
     quote:
       "The AI & Data Science specialisation gave me an edge. Projects were industry-relevant and the professors had real corporate experience.",
@@ -110,7 +80,7 @@ const testimonials = [
   },
   {
     name: "Sneha Ramachandran",
-    batch: "BBA 2022",
+    batch: "BBA – Business Administration 2022",
     company: "HDFC Bank",
     quote:
       "From personality development workshops to mock interviews, the college prepares you completely. I had 4 offers before the final year ended.",
@@ -435,7 +405,7 @@ export default function Home() {
                   {c.name}
                 </h3>
                 <p className="text-muted text-sm font-sans leading-relaxed mb-5">
-                  {c.desc}
+                  {c.shortDescription}
                 </p>
                 <div className="pt-3 border-t border-cream">
                   <span className="inline-flex items-center gap-2 text-gold-dark font-sans text-sm font-600">
@@ -752,7 +722,7 @@ export default function Home() {
                   </div>
                   <div className="flex justify-end">
                     <div className="bg-navy rounded-2xl rounded-tr-none px-4 py-3 text-sm font-sans text-white max-w-[80%]">
-                      What courses do you offer in Computer Science?
+                      What undergraduate courses do you offer?
                     </div>
                   </div>
                   <div className="flex gap-3">
@@ -760,37 +730,21 @@ export default function Home() {
                       A
                     </div>
                     <div className="bg-white rounded-2xl rounded-tl-none px-4 py-3 text-sm font-sans text-navy shadow-sm border border-navy/5 max-w-[80%]">
-                      Great choice! We offer:
-                      <div className="mt-2 space-y-1.5">
-                        <div className="flex items-center gap-2">
-                          <Monitor
-                            className="w-4 h-4 text-gold"
-                            strokeWidth={2}
-                          />
-                          <span>B.Sc Computer Science</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Shield
-                            className="w-4 h-4 text-gold"
-                            strokeWidth={2}
-                          />
-                          <span>B.Com</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Laptop
-                            className="w-4 h-4 text-gold"
-                            strokeWidth={2}
-                          />
-                          <span>BCA</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <GraduationCap
-                            className="w-4 h-4 text-gold"
-                            strokeWidth={2}
-                          />
-                          <span>BBA and BA English</span>
-                        </div>
-                      </div>
+                      We currently offer these 5 undergraduate programs:
+                      <ul className="mt-2 space-y-1.5">
+                        {courses.map((course) => (
+                          <li
+                            key={course.slug}
+                            className="flex items-center gap-2"
+                          >
+                            <GraduationCap
+                              className="w-4 h-4 text-gold"
+                              strokeWidth={2}
+                            />
+                            <span>{course.name}</span>
+                          </li>
+                        ))}
+                      </ul>
                       <div className="mt-2">Want details on any program?</div>
                     </div>
                   </div>

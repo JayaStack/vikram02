@@ -1,32 +1,5 @@
 import { Link } from "react-router-dom";
-
-const allCourses = [
-  {
-    slug: "bcom",
-    name: "B.Com",
-    desc: "Build strong fundamentals in accounting, finance, and business law.",
-  },
-  {
-    slug: "bba",
-    name: "BBA",
-    desc: "Learn business strategy, leadership, and practical management skills.",
-  },
-  {
-    slug: "bsc-computer-science",
-    name: "B.Sc Computer Science",
-    desc: "Master programming, software engineering, and core computer science concepts.",
-  },
-  {
-    slug: "bca",
-    name: "BCA",
-    desc: "Gain hands-on expertise in applications, databases, and full-stack development.",
-  },
-  {
-    slug: "ba-english",
-    name: "BA English",
-    desc: "Develop advanced communication, literary analysis, and critical thinking skills.",
-  },
-];
+import { courses } from "../constants/courses";
 
 export default function Courses() {
   return (
@@ -52,11 +25,11 @@ export default function Courses() {
       {/* Course Grid */}
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="mb-6 text-sm font-sans text-muted">
-          Showing <strong className="text-navy">{allCourses.length}</strong>{" "}
+          Showing <strong className="text-navy">{courses.length}</strong>{" "}
           programs
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {allCourses.map((c) => (
+          {courses.map((c) => (
             <Link
               key={c.slug}
               to={`/courses/${c.slug}`}
@@ -66,7 +39,7 @@ export default function Courses() {
                 {c.name}
               </h3>
               <p className="text-muted text-sm font-sans leading-relaxed mb-5">
-                {c.desc}
+                {c.shortDescription}
               </p>
               <div className="pt-3 border-t border-cream">
                 <span className="inline-flex items-center gap-2 text-gold-dark font-sans text-sm font-600">

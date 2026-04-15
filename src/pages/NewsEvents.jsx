@@ -41,11 +41,12 @@ const allItems = [
     id: 4,
     type: "News",
     category: "Programs",
-    title: "New Program Launch: B.Com FinTech & AI — Admissions Open for 2025",
+    title:
+      "Program Spotlight: B.Com – Accounting & Finance Admissions Open for 2025",
     date: "March 1, 2025",
     img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=800",
     excerpt:
-      "The college launches a pioneering B.Com FinTech & AI program — the first of its kind in Anna Nagar — combining commerce, financial technology, and artificial intelligence.",
+      "The college announces admissions for B.Com – Accounting & Finance with an updated curriculum in accounting, auditing, and financial analytics.",
     featured: false,
   },
   {
@@ -68,7 +69,7 @@ const allItems = [
     date: "February 20, 2025",
     img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800",
     excerpt:
-      "A 4-member team from B.Sc Computer Science clinched first place at the Smart India Hackathon 2025, beating 300+ teams from across the country.",
+      "A 4-member team from B.Sc – Psychology and BBA – Business Administration clinched first place at the Smart India Hackathon 2025, beating 300+ teams from across the country.",
     featured: false,
   },
 ];
