@@ -10,7 +10,9 @@ export default function CourseDetail() {
     return (
       <div className="min-h-screen bg-cream pt-32 px-6">
         <div className="max-w-3xl mx-auto bg-white border border-navy/5 rounded-2xl p-8 text-center">
-          <h1 className="font-serif text-3xl text-navy mb-3">Course Not Found</h1>
+          <h1 className="font-serif text-3xl text-navy mb-3">
+            Course Not Found
+          </h1>
           <p className="text-muted font-sans mb-6">
             The requested program is unavailable. Please explore the available
             programs below.
