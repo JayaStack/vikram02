@@ -220,7 +220,7 @@ export default function Home() {
           <img
             src="/images/college.jpg"
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover blur-[3px] scale-105"
             loading="eager"
             fetchPriority="high"
             aria-hidden="true"
@@ -233,117 +233,35 @@ export default function Home() {
         <div className="absolute bottom-1/4 left-0 w-80 h-80 rounded-full bg-blue-500/5 blur-3xl" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-20 py-8 md:py-10">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            {/* Left: Text */}
-            <div>
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-full px-4 py-2 mb-8">
-                <span className="w-2 h-2 bg-gold rounded-full animate-pulse" />
-                <span className="text-white/70 text-xs font-sans tracking-wider uppercase">
-                  Admissions 2025–26 Open
-                </span>
-              </div>
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6">
+              <span className="block">{COLLEGE_NAME}</span>
+              <span className="block italic font-light">Future with</span>
+              <span className="block text-gold">Industry-Ready</span>
+              <span className="block">Education.</span>
+            </h1>
 
-              <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-4">
-                <span className="block">{COLLEGE_NAME}</span>
-                <span className="block italic font-light">Future with</span>
-                <span className="block text-gold">Industry-Ready</span>
-                <span className="block">Education.</span>
-              </h1>
+            <p className="text-white/60 font-sans text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
+              {COLLEGE_NAME} is a NAAC A++ accredited autonomous college in
+              Chennai - 46 years of shaping careers across Arts, Science,
+              Commerce &amp; Technology.
+            </p>
 
-              <p className="text-white/55 font-sans text-base leading-relaxed max-w-lg mb-6">
-                {COLLEGE_NAME} is a NAAC A++ accredited autonomous college in
-                Chennai — 46 years of shaping careers across Arts, Science,
-                Commerce &amp; Technology.
-              </p>
-
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  to="/admissions"
-                  className="bg-gold text-white px-5 py-2.5 rounded-full font-sans font-600 text-sm tracking-wide hover:bg-gold-dark hover:shadow-xl hover:-translate-y-0.5 transition-all"
-                >
-                  Apply Now →
-                </Link>
-                <button className="border border-white/20 text-white px-5 py-2.5 rounded-full font-sans text-sm hover:bg-white/8 transition-all">
-                  Talk to Counsellor
-                </button>
-                <Link
-                  to="/campus"
-                  className="text-white/60 px-5 py-2.5 rounded-full font-sans text-sm hover:text-white transition-all flex items-center gap-2"
-                >
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  Virtual Campus Tour
-                </Link>
-              </div>
-            </div>
-
-            {/* Right: Floating cards */}
-            <div className="hidden lg:flex flex-col gap-4 items-end">
-              {/* NAAC badge */}
-              <div className="animate-float bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-5 w-64">
-                <div className="text-gold text-xs font-sans tracking-widest uppercase mb-1">
-                  Accreditation
-                </div>
-                <div className="text-white font-serif text-3xl font-600">
-                  A++
-                </div>
-                <div className="text-white/50 text-sm font-sans mt-1">
-                  NAAC · CGPA 3.59 · 3rd Cycle
-                </div>
-              </div>
-              {/* Placement */}
-              <div
-                className="animate-float bg-gold/15 backdrop-blur-md border border-gold/20 rounded-2xl px-6 py-5 w-64"
-                style={{ animationDelay: "0.8s" }}
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link
+                to="/admissions"
+                className="bg-gold text-white px-5 py-2.5 rounded-full font-sans font-600 text-sm tracking-wide hover:bg-gold-dark hover:shadow-xl hover:-translate-y-0.5 transition-all"
               >
-                <div className="text-gold text-xs font-sans tracking-widest uppercase mb-1">
-                  Placements
-                </div>
-                <div className="text-white font-serif text-3xl font-600">
-                  94%
-                </div>
-                <div className="text-white/50 text-sm font-sans mt-1">
-                  Average placement rate · 2024
-                </div>
-              </div>
-              {/* Students */}
-              <div
-                className="animate-float bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl px-6 py-5 w-64"
-                style={{ animationDelay: "1.6s" }}
-              >
-                <div className="text-gold text-xs font-sans tracking-widest uppercase mb-1">
-                  Community
-                </div>
-                <div className="text-white font-serif text-3xl font-600">
-                  15,000+
-                </div>
-                <div className="text-white/50 text-sm font-sans mt-1">
-                  Alumni across the globe
-                </div>
-              </div>
+                Apply Now →
+              </Link>
+              <button className="border border-white/25 text-white px-5 py-2.5 rounded-full font-sans text-sm hover:bg-white/8 transition-all">
+                Talk to Counsellor
+              </button>
             </div>
           </div>
 
           {/* Scroll indicator */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+          <div className="absolute bottom-0 translate-y-[100px] md:bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
             <span className="text-white text-xs font-sans tracking-widest uppercase">
               Scroll
             </span>
