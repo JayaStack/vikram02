@@ -124,7 +124,7 @@ export default function Admissions() {
             online in minutes.
           </p>
           <a
-            href="https://easycollege.in"
+            href="#"
             target="_blank"
             rel="noreferrer"
             className="inline-block bg-gold text-white px-8 py-3.5 rounded-full font-sans font-600 text-sm hover:bg-gold-dark transition-all hover:-translate-y-0.5 hover:shadow-xl"
