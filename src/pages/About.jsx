@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Sparkles, Target } from "lucide-react";
 import { COLLEGE_NAME } from "../constants/college";
 
@@ -44,21 +43,18 @@ const leadership = [
   {
     name: "Dr. Shirline David",
     role: "Principal",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400",
     quote:
       "Guided by our motto—Perfection, Perseverance, and Purity—we shape leaders of tomorrow.",
   },
   {
     name: "Prof. R. Krishnamurthy",
     role: "Dean — Academics",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400",
     quote:
       "Every curriculum decision is made with the student's career outcome as the north star.",
   },
   {
     name: "Dr. Meena Venkataraman",
     role: "Dean — Research",
-    img: "https://images.unsplash.com/photo-1554151228-14d9def656e4?q=80&w=400",
     quote: `Research at ${COLLEGE_NAME} bridges academic rigour with real-world relevance.`,
   },
 ];
@@ -185,18 +181,17 @@ export default function About() {
             <div className="section-label">Leadership</div>
             <h2 className="section-heading">The people who lead</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-12">
             {leadership.map((l, i) => (
-              <div key={i} className="text-center group">
-                <div className="w-24 h-24 rounded-full overflow-hidden mx-auto mb-5 border-4 border-cream group-hover:border-gold transition-all">
-                  <img
-                    src={l.img}
-                    alt={l.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="font-serif text-xl text-navy">{l.name}</h3>
-                <div className="text-gold text-xs font-sans tracking-wider uppercase mt-1 mb-4">
+              <div
+                key={i}
+                className="text-center max-w-sm mx-auto space-y-3 group hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="w-10 h-[1px] bg-gold mx-auto mb-3" />
+                <h3 className="font-serif text-xl text-navy font-600">
+                  {l.name}
+                </h3>
+                <div className="text-gold text-xs font-sans tracking-widest uppercase">
                   {l.role}
                 </div>
                 <p className="text-muted text-sm font-sans italic leading-relaxed">
@@ -204,26 +199,6 @@ export default function About() {
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-      </div>
-
-      {/* CTA */}
-      <div className="bg-navy py-20">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="font-serif text-4xl text-white mb-4">
-            Be part of a 46-year legacy
-          </h2>
-          <p className="text-white/50 font-sans mb-8">
-            Admissions open for 2025–26. Join our community of changemakers.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/admissions" className="btn-primary">
-              Apply Now →
-            </Link>
-            <Link to="/contact" className="btn-outline">
-              Contact Us
-            </Link>
           </div>
         </div>
       </div>

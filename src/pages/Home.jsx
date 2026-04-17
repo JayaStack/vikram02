@@ -26,6 +26,53 @@ function useScrollReveal() {
   }, []);
 }
 
+function useCountUp(end, duration = 2000) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    if (!ref.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started) {
+          console.log("VISIBLE");
+          setStarted(true);
+
+          const startTime = performance.now();
+
+          const animate = (time) => {
+            const progress = Math.min((time - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const value = Math.floor(eased * end);
+
+            setCount(value);
+
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            } else {
+              setCount(end);
+            }
+          };
+
+          requestAnimationFrame(animate);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -50px 0px",
+      },
+    );
+
+    observer.observe(ref.current);
+
+    return () => observer.disconnect();
+  }, [end, duration, started]);
+
+  return [count, ref];
+}
+
 /* ── data ── */
 const stats = [
   { value: "3,200+", label: "Students Enrolled", icon: GraduationCap },
@@ -190,6 +237,31 @@ const campusImages = [
   },
 ];
 
+function StatCard({ stat }) {
+  const numericValue = parseInt(stat.value.replace(/[^0-9]/g, ""), 10) || 0;
+  const [count, ref] = useCountUp(numericValue);
+  const suffix = stat.value.includes("yrs")
+    ? " yrs"
+    : stat.value.includes("%")
+      ? "%"
+      : stat.value.includes("+")
+        ? "+"
+        : "";
+
+  return (
+    <div ref={ref} className="text-center">
+      <div className="mb-2 flex justify-center">
+        <stat.icon className="w-5 h-5 text-white" strokeWidth={2} />
+      </div>
+      <div className="font-serif text-3xl md:text-4xl text-white font-600">
+        {count.toLocaleString()}
+        {suffix}
+      </div>
+      <div className="text-white/70 text-sm font-sans mt-1">{stat.label}</div>
+    </div>
+  );
+}
+
 /* ── component ── */
 export default function Home() {
   useScrollReveal();
@@ -271,21 +343,11 @@ export default function Home() {
       </section>
 
       {/* ── STATS STRIP ── */}
-      <section className="bg-gold py-10">
+      <section className="bg-gold py-10 overflow-visible">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {stats.map((s, i) => (
-              <div key={i} className="text-center">
-                <div className="mb-2 flex justify-center">
-                  <s.icon className="w-5 h-5 text-white" strokeWidth={2} />
-                </div>
-                <div className="font-serif text-3xl md:text-4xl text-white font-600">
-                  {s.value}
-                </div>
-                <div className="text-white/70 text-sm font-sans mt-1">
-                  {s.label}
-                </div>
-              </div>
+            {stats.map((s) => (
+              <StatCard key={s.label} stat={s} />
             ))}
           </div>
         </div>
@@ -468,7 +530,7 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className="reveal animate-on-scroll grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-4">
+          <div className="reveal animate-on-scroll grid grid-cols-2 md:grid-cols-4 md:auto-rows-[180px] gap-4">
             {campusImages.map((img, i) => (
               <div
                 key={i}
@@ -477,7 +539,7 @@ export default function Home() {
                 <img
                   src={img.url}
                   alt={img.label}
-                  className="w-full h-56 md:h-64 object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
                 <div className="absolute bottom-4 left-4 text-white font-sans text-sm font-600">

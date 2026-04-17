@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { COLLEGE_NAME } from "../constants/college";
 
 const footerLinks = {
@@ -32,37 +32,6 @@ const footerLinks = {
 export default function Footer() {
   return (
     <footer className="bg-navy text-white">
-      {/* CTA Band */}
-      <div className="bg-gold/10 border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <div className="font-serif text-2xl md:text-3xl font-600 text-white">
-              Ready to shape your future?
-            </div>
-            <div className="text-white/60 text-sm mt-1 font-sans">
-              Admissions 2025–26 open. Limited seats available.
-            </div>
-          </div>
-          <div className="flex items-center gap-3">
-            <Link
-              to="/admissions"
-              className="inline-flex items-center gap-2 bg-gold text-white px-6 py-3 rounded-full text-sm font-sans font-600 hover:bg-gold-dark transition-all"
-            >
-              <ArrowRight className="w-4 h-4" strokeWidth={2} />
-              Apply Now →
-            </Link>
-            <a
-              href="https://wa.me/914426212089"
-              target="_blank"
-              rel="noreferrer"
-              className="border border-white/20 text-white px-6 py-3 rounded-full text-sm font-sans hover:bg-white/5 transition-all"
-            >
-              WhatsApp Us
-            </a>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">

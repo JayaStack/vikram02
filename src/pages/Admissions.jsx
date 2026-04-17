@@ -167,13 +167,13 @@ export default function Admissions() {
           {steps.map((s, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl p-7 border border-navy/5 hover:border-gold/30 hover:-translate-y-1 hover:shadow-xl transition-all group"
+              className="bg-white rounded-2xl p-7 border border-navy/5 hover:border-gold/30 hover:-translate-y-1 hover:shadow-xl transition-all group relative"
             >
+              <div className="absolute top-4 right-6 text-5xl font-serif text-navy/50 blur-[1px] group-hover:text-navy/50 transition-all duration-300">
+                {s.num}
+              </div>
               <div className="flex items-start justify-between mb-5">
                 <s.icon className="w-6 h-6 text-gold" strokeWidth={2} />
-                <div className="font-serif text-5xl text-navy/5 font-600 group-hover:text-gold/10 transition-colors">
-                  {s.num}
-                </div>
               </div>
               <h3 className="font-serif text-xl text-navy font-600 mb-3">
                 {s.title}
