@@ -378,8 +378,7 @@ export default function Home() {
               <Link
                 key={i}
                 to={`/courses/${c.slug}`}
-                className="reveal animate-on-scroll group bg-white rounded-2xl p-6 border border-navy/5 hover:border-gold/30 hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
-                style={{ transitionDelay: `${i * 0.1}s` }}
+                className="reveal animate-on-scroll group bg-white rounded-2xl p-6 border border-navy/5 transform will-change-transform transition-all duration-300 ease-out hover:border-gold/30 hover:-translate-y-2 hover:scale-[1.02] hover:shadow-xl"
               >
                 <h3 className="font-serif text-xl text-navy font-600 mb-3">
                   {c.name}
