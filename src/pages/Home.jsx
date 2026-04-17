@@ -584,22 +584,16 @@ export default function Home() {
                     </svg>
                   ))}
                 </div>
-                <p className="text-white/70 font-sans text-sm leading-relaxed italic mb-6">
+                <p className="text-white/80 font-sans text-sm leading-relaxed italic">
                   "{t.quote}"
                 </p>
-                <div className="flex items-center gap-3">
-                  <img
-                    src={t.img}
-                    alt={t.name}
-                    className="w-10 h-10 rounded-full object-cover border-2 border-gold/20"
-                  />
-                  <div>
-                    <div className="text-white font-sans font-600 text-sm">
-                      {t.name}
-                    </div>
-                    <div className="text-white/40 text-xs font-sans">
-                      {t.batch} · {t.company}
-                    </div>
+                <div className="w-6 h-[1px] bg-gold/40 my-4" />
+                <div className="mt-4 space-y-1">
+                  <div className="font-sans font-600 text-white text-sm">
+                    {t.name}
+                  </div>
+                  <div className="text-white/50 text-xs font-sans">
+                    {t.batch} · {t.company}
                   </div>
                 </div>
               </div>
@@ -770,7 +764,7 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link to="/admissions" className="btn-primary text-base px-8 py-4">
-              Apply Now — 2025 Admissions
+              Apply Now — 2026 Admissions
             </Link>
             <a
               href="https://wa.me/914426212089"

@@ -8,6 +8,7 @@ import {
   Handshake,
   Target,
 } from "lucide-react";
+import { ADMISSION_YEAR, ADMISSION_YEAR_RANGE } from "../constants/site";
 
 const steps = [
   {
@@ -49,18 +50,21 @@ const steps = [
 ];
 
 const importantDates = [
-  { event: "Application Portal Opens", date: "March 14, 2025" },
-  { event: "Last Date for Applications", date: "June 15, 2025" },
-  { event: "Document Verification", date: "June 16–30, 2025" },
-  { event: "First Allotment List", date: "July 5, 2025" },
-  { event: "Fee Payment Deadline", date: "July 15, 2025" },
-  { event: "Classes Commence", date: "August 1, 2025" },
+  { event: "Application Portal Opens", date: `March 14, ${ADMISSION_YEAR}` },
+  {
+    event: "Last Date for Applications",
+    date: `June 15, ${ADMISSION_YEAR}`,
+  },
+  { event: "Document Verification", date: `June 16–30, ${ADMISSION_YEAR}` },
+  { event: "First Allotment List", date: `July 5, ${ADMISSION_YEAR}` },
+  { event: "Fee Payment Deadline", date: `July 15, ${ADMISSION_YEAR}` },
+  { event: "Classes Commence", date: `August 1, ${ADMISSION_YEAR}` },
 ];
 
 const faqs = [
   {
     q: "Is the college co-educational?",
-    a: "Yes, the institute now welcomes both male and female students across all programs from the 2025–26 academic year.",
+    a: `Yes, the institute now welcomes both male and female students across all programs from the ${ADMISSION_YEAR_RANGE} academic year.`,
   },
   {
     q: "What documents are required for admission?",
@@ -114,7 +118,7 @@ export default function Admissions() {
         />
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="text-gold text-xs font-sans tracking-[0.2em] uppercase mb-3">
-            Admissions 2025–26
+            Admissions {ADMISSION_YEAR_RANGE}
           </div>
           <h1 className="font-serif text-5xl md:text-6xl text-white mb-5">
             Begin Your Journey

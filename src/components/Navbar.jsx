@@ -50,11 +50,11 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 flex-shrink-0">
-            <div
-              className={`w-9 h-9 rounded-lg flex items-center justify-center font-serif font-700 text-lg transition-all ${scrolled || !isHome ? "bg-navy text-gold" : "bg-white/20 text-white border border-white/30"}`}
-            >
-              D
-            </div>
+            <img
+              src="/images/android-chrome-192x192.png"
+              alt="College Logo"
+              className="w-10 h-10 object-contain"
+            />
             <div className="min-w-0">
               <div
                 className={`hidden sm:block font-serif text-lg font-600 leading-tight transition-colors max-w-[220px] truncate ${logoColor}`}

@@ -1,5 +1,6 @@
 import { Sparkles, Target } from "lucide-react";
 import { COLLEGE_NAME } from "../constants/college";
+import { ADMISSION_YEAR } from "../constants/site";
 
 const values = [
   {
@@ -33,7 +34,7 @@ const milestones = [
     event: "NAAC Re-accreditation — A++ Grade, CGPA 3.59 (Third Cycle)",
   },
   {
-    year: "2025",
+    year: `${ADMISSION_YEAR}`,
     event:
       "Transition to co-educational institute; AI & FinTech programs launched",
   },

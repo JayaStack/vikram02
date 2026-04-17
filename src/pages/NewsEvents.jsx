@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Newspaper } from "lucide-react";
 import { COLLEGE_NAME } from "../constants/college";
+import { ADMISSION_YEAR } from "../constants/site";
 
 const allItems = [
   {
@@ -9,7 +10,7 @@ const allItems = [
     type: "News",
     category: "Accreditation",
     title: `${COLLEGE_NAME} Receives NAAC A++ Re-accreditation with CGPA 3.59`,
-    date: "March 15, 2025",
+    date: `March 15, ${ADMISSION_YEAR}`,
     img: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=800",
     excerpt:
       "The National Assessment and Accreditation Council has awarded the institute its highest grade — A++ — making it one of the top-ranked autonomous colleges in Tamil Nadu.",
@@ -19,8 +20,8 @@ const allItems = [
     id: 2,
     type: "Event",
     category: "Placement",
-    title: "Campus Recruitment Drive 2025 — Zoho, Freshworks & TCS on Campus",
-    date: "April 5, 2025",
+    title: `Campus Recruitment Drive ${ADMISSION_YEAR} — Zoho, Freshworks & TCS on Campus`,
+    date: `April 5, ${ADMISSION_YEAR}`,
     img: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800",
     excerpt:
       "3 major tech companies conducted on-campus recruitment drives this season with a combined offer count of 140+ students.",
@@ -30,8 +31,8 @@ const allItems = [
     id: 3,
     type: "Event",
     category: "Academic",
-    title: 'Annual Cultural Festival "AAKASH 2025" — Register Now',
-    date: "April 20, 2025",
+    title: `Annual Cultural Festival "AAKASH ${ADMISSION_YEAR}" — Register Now`,
+    date: `April 20, ${ADMISSION_YEAR}`,
     img: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800",
     excerpt:
       "Our annual inter-collegiate cultural festival returns with dance, drama, music, fine arts, and literary events. Registrations close April 18.",
@@ -41,9 +42,8 @@ const allItems = [
     id: 4,
     type: "News",
     category: "Programs",
-    title:
-      "Program Spotlight: B.Com – Accounting & Finance Admissions Open for 2025",
-    date: "March 1, 2025",
+    title: `Program Spotlight: B.Com – Accounting & Finance Admissions Open for ${ADMISSION_YEAR}`,
+    date: `March 1, ${ADMISSION_YEAR}`,
     img: "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?q=80&w=800",
     excerpt:
       "The college announces admissions for B.Com – Accounting & Finance with an updated curriculum in accounting, auditing, and financial analytics.",
@@ -55,7 +55,7 @@ const allItems = [
     category: "Workshop",
     title:
       "AI & Data Science Workshop by IIT Madras Alumni — Free for Students",
-    date: "April 28, 2025",
+    date: `April 28, ${ADMISSION_YEAR}`,
     img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800",
     excerpt:
       "A full-day hands-on workshop on Python, Machine Learning basics, and career paths in AI. Limited seats — register via the student portal.",
@@ -66,10 +66,9 @@ const allItems = [
     type: "News",
     category: "Achievement",
     title: "Student Team Wins National Hackathon at IIT Bombay",
-    date: "February 20, 2025",
+    date: `February 20, ${ADMISSION_YEAR}`,
     img: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800",
-    excerpt:
-      "A 4-member team from B.Sc – Psychology and BBA – Business Administration clinched first place at the Smart India Hackathon 2025, beating 300+ teams from across the country.",
+    excerpt: `A 4-member team from B.Sc – Psychology and BBA – Business Administration clinched first place at the Smart India Hackathon ${ADMISSION_YEAR}, beating 300+ teams from across the country.`,
     featured: false,
   },
 ];
