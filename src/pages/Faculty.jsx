@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 const faculty = [
   {
@@ -76,78 +77,103 @@ export default function Faculty() {
       : faculty.filter((f) => f.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-cream">
-      <div className="bg-navy pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy to-navy-light" />
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="text-gold text-xs font-sans tracking-[0.2em] uppercase mb-3">
-            Our Team
+    <div className="overflow-x-hidden font-sans">
+      
+      {/* ── HERO SECTION ── */}
+      <section className="bg-navy/5 pt-16 pb-24 md:pt-24 md:pb-32 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="pr-0 md:pr-12">
+            <div className="text-gold text-xs font-sans font-bold tracking-[0.2em] uppercase mb-4">
+              Our Team
+            </div>
+            <h1 className="font-sans font-bold text-5xl md:text-7xl text-navy leading-tight tracking-tight mb-6">
+              Expert Faculty
+            </h1>
+            <p className="text-navy/80 font-sans text-lg leading-relaxed mb-8">
+              140+ faculty members with industry experience, PhD qualifications, and a passion for teaching. Our team is dedicated to nurturing the next generation of leaders.
+            </p>
           </div>
-          <h1 className="font-serif text-5xl md:text-6xl text-white mb-4">
-            Expert Faculty
-          </h1>
-          <p className="text-white/50 font-sans text-lg max-w-xl">
-            140+ faculty members with industry experience, PhD qualifications,
-            and a passion for teaching.
-          </p>
+          <div className="relative">
+            <img
+              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1000"
+              alt="Faculty Hero"
+              className="w-full object-cover shadow-2xl"
+              style={{ minHeight: "400px" }}
+            />
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Stats */}
-      <div className="bg-gold">
-        <div className="max-w-7xl mx-auto px-6 py-8">
-          <div className="grid grid-cols-3 gap-8 text-center">
+      {/* ── STATS SECTION ── */}
+      <section className="bg-navy py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
               ["140+", "Faculty Members"],
               ["78%", "PhD Qualified"],
               ["12 yrs", "Avg. Experience"],
             ].map(([v, l]) => (
-              <div key={l}>
-                <div className="font-serif text-3xl text-white font-600">
+              <div key={l} className="p-6 border-x border-white/10 hover:bg-white/5 transition-colors">
+                <div className="font-sans font-bold text-4xl text-white mb-2">
                   {v}
                 </div>
-                <div className="text-white/70 text-sm font-sans">{l}</div>
+                <div className="text-white/50 text-[11px] font-sans font-bold uppercase tracking-widest">
+                  {l}
+                </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        {/* Filter */}
-        <div className="flex gap-2 flex-wrap mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-xs font-sans font-600 transition-all ${selectedCategory === category ? "bg-navy text-white" : "bg-white border border-navy/10 text-navy/60 hover:text-navy"}`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+      {/* ── FILTER + GRID ── */}
+      <section className="py-24 bg-white px-6 md:px-12 border-b border-navy/10">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* Filter */}
+          <div className="flex gap-4 flex-wrap mb-16">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-6 py-3 font-sans font-bold text-[11px] tracking-widest uppercase transition-all border-2 ${selectedCategory === category ? "bg-navy border-navy text-white shadow-lg" : "bg-white border-navy/10 text-navy/60 hover:border-navy hover:text-navy"}`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {filtered.map((f, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-2xl p-6 border border-navy/5 hover:border-gold/30 hover:-translate-y-1 hover:shadow-xl transition-all h-full"
-            >
-              <div className="w-6 h-[1px] bg-gold mb-3" />
-              <div className="text-xs text-gold uppercase tracking-widest mb-2 font-sans">
-                {f.category}
+          {/* Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {filtered.map((f, i) => (
+              <div
+                key={i}
+                className="flex flex-col group border-2 border-navy/10 bg-white hover:border-navy transition-all p-8 relative"
+              >
+                <div className="w-8 h-[2px] bg-navy/20 mb-6 group-hover:w-full group-hover:bg-navy transition-all duration-500" />
+                <div className="text-[10px] text-navy/40 font-bold uppercase tracking-widest mb-3 font-sans">
+                  {f.category}
+                </div>
+                <h3 className="font-sans font-bold text-xl text-navy mb-3 group-hover:text-navy-light transition-colors">
+                  {f.name}
+                </h3>
+                <div className="text-sm text-navy font-bold mb-4 font-sans border-b border-navy/5 pb-4">
+                  {f.qual} · {f.exp}
+                </div>
+                <p className="text-navy/70 text-[15px] font-sans leading-relaxed flex-grow">
+                  {f.specialisation}
+                </p>
+                <div className="mt-8 pt-6 border-t-2 border-navy/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                   <span className="text-navy font-sans font-bold text-[10px] tracking-widest uppercase flex items-center gap-2">
+                     Expert Profile <ArrowRight className="w-3 h-3" />
+                   </span>
+                </div>
               </div>
-              <h3 className="font-serif text-lg text-navy font-600 mb-1">
-                {f.name}
-              </h3>
-              <div className="text-sm text-gold-dark mb-2 font-sans">
-                {f.qual} · {f.exp}
-              </div>
-              <p className="text-muted text-sm font-sans">{f.specialisation}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 }
