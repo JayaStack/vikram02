@@ -6,6 +6,7 @@ import {
   Building2,
   Handshake,
   Mic,
+  ArrowRight
 } from "lucide-react";
 
 const placementStats = [
@@ -116,218 +117,215 @@ const yearwiseData = [
 
 export default function Placements() {
   return (
-    <div className="min-h-screen bg-cream">
-      {/* Hero */}
-      <div className="bg-navy pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy-dark via-navy to-navy-light" />
-        <div
-          className="absolute right-0 bottom-0 w-1/3 h-full opacity-5"
-          style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800)",
-            backgroundSize: "cover",
-          }}
-        />
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="text-gold text-xs font-sans tracking-[0.2em] uppercase mb-3">
-            Career Outcomes
+    <div className="overflow-x-hidden font-sans">
+      
+      {/* ── HERO SECTION ── */}
+      <section className="bg-navy/5 pt-16 pb-24 md:pt-24 md:pb-32 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="pr-0 md:pr-12">
+            <h1 className="font-sans font-bold text-5xl md:text-7xl text-navy leading-tight tracking-tight mb-6">
+              Career Outcomes
+            </h1>
+            <p className="text-navy/80 font-sans text-lg leading-relaxed mb-8">
+              Our placement cell works year-round to ensure every student leaves prepared for a career, not just a degree. Join the 94% of graduates who successfully secure placements.
+            </p>
+            <Link
+              to="/admissions"
+              className="bg-navy text-white px-6 py-4 font-sans font-bold text-sm inline-flex items-center gap-3 hover:bg-navy-light transition-colors"
+            >
+              Start your journey
+              <ArrowRight className="w-5 h-5 rounded-full border border-white p-0.5" />
+            </Link>
           </div>
-          <h1 className="font-serif text-5xl md:text-6xl text-white mb-5">
-            94% of our graduates
-            <br />
-            <em className="font-light text-gold">get placed.</em>
-          </h1>
-          <p className="text-white/50 font-sans text-lg max-w-xl">
-            Our placement cell works year-round to ensure every student leaves
-            prepared for a career, not just a degree.
-          </p>
+          <div className="relative">
+            <img
+              src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800"
+              alt="Placements Hero"
+              className="w-full object-cover shadow-2xl"
+              style={{ minHeight: "400px" }}
+            />
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Stat Pillars */}
-      <div className="bg-white border-b border-navy/5">
-        <div className="max-w-7xl mx-auto px-6 py-12">
+      {/* ── STAT PILLARS ── */}
+      <section className="bg-white py-12 px-6 border-b border-navy/10">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {placementStats.map((s, i) => (
               <div
                 key={i}
-                className="text-center border-r border-navy/5 last:border-0"
+                className="text-center border-r-2 border-navy/10 last:border-0 px-4"
               >
-                <div className="font-serif text-5xl md:text-6xl text-navy font-600 mb-1">
+                <div className="font-sans font-bold text-5xl md:text-6xl text-navy mb-2">
                   {s.value}
                 </div>
-                <div className="text-navy font-sans font-600 text-sm mb-0.5">
+                <div className="text-navy font-sans font-bold text-[15px] uppercase tracking-wide mb-1">
                   {s.label}
                 </div>
-                <div className="text-muted text-xs font-sans">{s.sub}</div>
+                <div className="text-navy/60 text-xs font-sans uppercase tracking-widest">{s.sub}</div>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Year-wise chart */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="section-label text-center">Track Record</div>
-        <h2 className="section-heading text-center mb-12">
-          Placement performance <em className="font-light">over the years</em>
-        </h2>
-        <div className="bg-white rounded-2xl border border-navy/5 overflow-x-auto">
-          <table className="w-full min-w-[500px]">
-            <thead>
-              <tr className="border-b border-cream">
-                <th className="text-left px-8 py-5 text-xs font-sans font-600 text-navy/40 tracking-widest uppercase">
-                  Year
-                </th>
-                <th className="text-left px-8 py-5 text-xs font-sans font-600 text-navy/40 tracking-widest uppercase">
-                  Students Placed
-                </th>
-                <th className="text-left px-8 py-5 text-xs font-sans font-600 text-navy/40 tracking-widest uppercase">
-                  Placement %
-                </th>
-                <th className="text-left px-8 py-5 text-xs font-sans font-600 text-navy/40 tracking-widest uppercase">
-                  Average Package
-                </th>
-                <th className="text-left px-8 py-5 text-xs font-sans font-600 text-navy/40 tracking-widest uppercase">
-                  Highest Package
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {yearwiseData.map((row, i) => (
-                <tr
-                  key={i}
-                  className="border-b border-cream last:border-0 hover:bg-cream/50 transition-colors"
-                >
-                  <td className="px-8 py-5 font-serif text-2xl text-navy font-600">
-                    {row.year}
-                  </td>
-                  <td className="px-8 py-5">
-                    <div className="flex items-center gap-3">
-                      <div className="flex-1 max-w-32 bg-cream rounded-full h-2">
-                        <div
-                          className="bg-gold rounded-full h-2 transition-all"
-                          style={{
-                            width: `${(row.placed / row.total) * 100}%`,
-                          }}
-                        />
-                      </div>
-                      <span className="text-navy font-sans text-sm font-600">
-                        {row.placed}/{row.total}
-                      </span>
-                    </div>
-                  </td>
-                  <td className="px-8 py-5">
-                    <span className="bg-emerald-50 text-emerald-700 font-sans font-600 text-sm px-3 py-1 rounded-full">
-                      {row.placed}%
-                    </span>
-                  </td>
-                  <td className="px-8 py-5 text-navy font-serif text-xl font-600">
-                    {row.avg}
-                  </td>
-                  <td className="px-8 py-5 text-gold font-serif text-xl font-600">
-                    {row.highest}
-                  </td>
+      {/* ── YEAR-WISE CHART ── */}
+      <section className="bg-navy/5 py-24 px-6 md:px-12 border-b border-navy/10">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-center font-sans font-bold text-3xl md:text-4xl text-navy mb-12">
+            Placement Performance
+          </h2>
+          <div className="bg-white border-2 border-navy/10 overflow-x-auto">
+            <table className="w-full min-w-[600px]">
+              <thead>
+                <tr className="border-b-2 border-navy/10 bg-navy/5">
+                  <th className="text-left px-8 py-6 text-xs font-sans font-bold text-navy tracking-widest uppercase">
+                    Year
+                  </th>
+                  <th className="text-left px-8 py-6 text-xs font-sans font-bold text-navy tracking-widest uppercase">
+                    Students Placed
+                  </th>
+                  <th className="text-left px-8 py-6 text-xs font-sans font-bold text-navy tracking-widest uppercase">
+                    Placement %
+                  </th>
+                  <th className="text-left px-8 py-6 text-xs font-sans font-bold text-navy tracking-widest uppercase">
+                    Average Package
+                  </th>
+                  <th className="text-left px-8 py-6 text-xs font-sans font-bold text-navy tracking-widest uppercase">
+                    Highest Package
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      {/* Training Programs */}
-      <div className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <div className="section-label">Pre-Placement Training</div>
-            <h2 className="section-heading">
-              We prepare you <em className="font-light">from Day 1</em>
-            </h2>
+              </thead>
+              <tbody>
+                {yearwiseData.map((row, i) => (
+                  <tr
+                    key={i}
+                    className="border-b border-navy/10 last:border-0 hover:bg-navy/5 transition-colors"
+                  >
+                    <td className="px-8 py-6 font-sans text-2xl text-navy font-bold">
+                      {row.year}
+                    </td>
+                    <td className="px-8 py-6">
+                      <div className="flex items-center gap-4">
+                        <div className="flex-1 max-w-32 bg-navy/10 h-2">
+                          <div
+                            className="bg-navy h-2 transition-all"
+                            style={{
+                              width: `${(row.placed / row.total) * 100}%`,
+                            }}
+                          />
+                        </div>
+                        <span className="text-navy font-sans text-[15px] font-bold">
+                          {row.placed}/{row.total}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="px-8 py-6">
+                      <span className="bg-navy text-white font-sans font-bold text-sm px-4 py-1.5 inline-block">
+                        {row.placed}%
+                      </span>
+                    </td>
+                    <td className="px-8 py-6 text-navy font-sans text-xl font-bold">
+                      {row.avg}
+                    </td>
+                    <td className="px-8 py-6 text-navy font-sans text-xl font-bold">
+                      {row.highest}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
+        </div>
+      </section>
+
+      {/* ── TRAINING PROGRAMS ── */}
+      <section className="bg-white py-24 px-6 md:px-12 border-b border-navy/10">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-center font-sans font-bold text-3xl md:text-4xl text-navy mb-12">
+            Pre-Placement Training
+          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {programs.map((p, i) => (
               <div
                 key={i}
-                className="bg-cream rounded-2xl p-6 hover:bg-navy hover:text-white transition-all group"
+                className="flex flex-col group border-2 border-navy/10 bg-navy/5 hover:border-navy hover:bg-white transition-all p-8"
               >
-                <p.icon className="w-6 h-6 text-gold mb-4" strokeWidth={2} />
-                <h3 className="font-serif text-xl text-navy group-hover:text-white font-600 mb-2">
+                <div className="mb-6 text-navy group-hover:scale-110 transition-transform origin-left">
+                  <p.icon className="w-10 h-10" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-sans font-bold text-xl text-navy mb-4">
                   {p.title}
                 </h3>
-                <p className="text-muted group-hover:text-white/60 text-sm font-sans leading-relaxed">
+                <p className="font-sans text-[15px] text-navy/80 leading-relaxed flex-grow">
                   {p.desc}
                 </p>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Recruiters */}
-      <div className="bg-cream py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <div className="section-label">Our Recruiters</div>
-            <h2 className="section-heading">
-              250+ companies trust our graduates
-            </h2>
-          </div>
-          <div className="flex flex-wrap gap-3 justify-center">
+      {/* ── RECRUITERS ── */}
+      <section className="bg-navy/5 py-24 px-6 md:px-12 border-b border-navy/10">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-center font-sans font-bold text-3xl md:text-4xl text-navy mb-12">
+            Our Recruiters
+          </h2>
+          <div className="flex flex-wrap gap-4 justify-center">
             {recruiters.map((r, i) => (
               <div
                 key={i}
-                className="group bg-white border border-navy/5 rounded-xl px-5 py-3 hover:border-gold/40 hover:shadow-md transition-all"
+                className="group bg-white border-2 border-navy/10 px-6 py-4 hover:border-navy transition-colors min-w-[140px] text-center"
               >
-                <div className="font-sans font-600 text-navy/70 text-sm group-hover:text-navy">
+                <div className="font-sans font-bold text-navy mb-1 text-[15px]">
                   {r.name}
                 </div>
-                <div className="text-[10px] font-sans text-muted uppercase tracking-wider">
+                <div className="text-[11px] font-sans text-navy/60 uppercase tracking-widest font-bold">
                   {r.sector}
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Student Testimonials */}
-      <div className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <div className="section-label">Success Stories</div>
-            <h2 className="section-heading">
-              From campus <em className="font-light">to career</em>
-            </h2>
-          </div>
+      {/* ── TESTIMONIALS ── */}
+      <section className="bg-white py-24 px-6 md:px-12 border-b border-navy/10">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-center font-sans font-bold text-3xl md:text-4xl text-navy mb-12">
+            Success Stories
+          </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {testimonials.map((t, i) => (
               <div
                 key={i}
-                className="bg-cream rounded-2xl p-6 border border-navy/5 hover:-translate-y-1 hover:shadow-xl transition-all"
+                className="bg-navy/5 p-8 border border-navy/10 hover:shadow-xl transition-all duration-300 flex flex-col"
               >
-                <div className="flex items-center gap-3 mb-5">
+                <div className="flex items-center gap-4 mb-6">
                   <img
                     src={t.img}
                     alt={t.name}
-                    className="w-12 h-12 rounded-full object-cover border-2 border-white"
+                    className="w-14 h-14 object-cover border-2 border-navy"
                   />
                   <div>
-                    <div className="font-sans font-600 text-navy text-sm">
+                    <div className="font-sans font-bold text-navy text-[15px]">
                       {t.name}
                     </div>
-                    <div className="text-muted text-xs font-sans">
+                    <div className="text-navy/60 text-[11px] font-sans uppercase tracking-widest font-bold mt-1">
                       {t.batch}
                     </div>
                   </div>
                 </div>
-                <p className="text-muted text-sm font-sans italic leading-relaxed mb-5">
+                <p className="text-navy/80 text-[15px] font-sans italic leading-relaxed mb-8 flex-grow">
                   "{t.quote}"
                 </p>
-                <div className="border-t border-navy/5 pt-4 flex items-center justify-between">
-                  <span className="text-navy font-sans font-600 text-sm">
+                <div className="border-t-2 border-navy/10 pt-5 flex items-center justify-between">
+                  <span className="text-navy font-sans font-bold text-sm">
                     {t.company}
                   </span>
-                  <span className="text-gold font-serif font-600">
+                  <span className="text-navy font-sans font-bold">
                     {t.package}
                   </span>
                 </div>
@@ -335,28 +333,34 @@ export default function Placements() {
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* CTA */}
-      <div className="bg-navy py-20">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="font-serif text-4xl text-white mb-4">
+      {/* ── CTA ── */}
+      <section className="bg-navy py-24 px-6 md:px-12 text-center">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="font-sans font-bold text-4xl text-white mb-6">
             Your placement journey starts at admission
           </h2>
-          <p className="text-white/50 font-sans mb-8">
-            We start training from Semester 1. The sooner you join, the better
-            prepared you'll be.
+          <p className="text-white/80 font-sans text-lg mb-10">
+            We start training from Semester 1. The sooner you join, the better prepared you'll be.
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/admissions" className="btn-primary">
-              Apply Now →
+          <div className="flex flex-wrap justify-center gap-6">
+            <Link
+              to="/admissions"
+              className="bg-white text-navy px-8 py-4 font-sans font-bold text-sm inline-flex items-center gap-3 hover:bg-cream transition-colors"
+            >
+              Apply Now
+              <ArrowRight className="w-5 h-5 rounded-full border border-navy p-0.5" />
             </Link>
-            <Link to="/contact" className="btn-outline">
+            <Link
+              to="/contact"
+              className="border-2 border-white text-white px-8 py-4 font-sans font-bold text-sm inline-flex items-center hover:bg-white/10 transition-colors"
+            >
               Talk to Placement Cell
             </Link>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
