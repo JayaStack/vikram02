@@ -7,6 +7,7 @@ import {
   GraduationCap,
   Handshake,
   Target,
+  ArrowRight
 } from "lucide-react";
 import { ADMISSION_YEAR, ADMISSION_YEAR_RANGE } from "../constants/site";
 
@@ -103,128 +104,116 @@ export default function Admissions() {
   };
 
   return (
-    <div className="min-h-screen bg-cream">
-      {/* Header */}
-      <div className="bg-navy pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-navy to-navy-light" />
-        <div
-          className="absolute right-0 top-0 w-1/2 h-full opacity-10"
-          style={{
-            backgroundImage:
-              "url(https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1000)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="text-gold text-xs font-sans tracking-[0.2em] uppercase mb-3">
-            Admissions {ADMISSION_YEAR_RANGE}
+    <div className="overflow-x-hidden font-sans">
+      
+      {/* ── HERO SECTION ── */}
+      <section className="bg-navy/5 pt-16 pb-24 md:pt-24 md:pb-32 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="pr-0 md:pr-12">
+            <div className="text-gold text-xs font-sans font-bold tracking-[0.2em] uppercase mb-4">
+              Admissions {ADMISSION_YEAR_RANGE}
+            </div>
+            <h1 className="font-sans font-bold text-5xl md:text-7xl text-navy leading-tight tracking-tight mb-6">
+              Begin Your Journey
+            </h1>
+            <p className="text-navy/80 font-sans text-lg leading-relaxed mb-8">
+              Experience a simple, transparent, and student-first admissions process. Apply online in minutes and join a community dedicated to academic excellence.
+            </p>
+            <a
+              href="#"
+              className="bg-navy text-white px-8 py-4 font-sans font-bold text-sm inline-flex items-center gap-3 hover:bg-navy-light transition-colors"
+            >
+              Start Application
+              <ArrowRight className="w-5 h-5 rounded-full border border-white p-0.5" />
+            </a>
           </div>
-          <h1 className="font-serif text-5xl md:text-6xl text-white mb-5">
-            Begin Your Journey
-          </h1>
-          <p className="text-white/50 font-sans text-lg max-w-xl mb-8">
-            Simple, transparent, and student-first admissions process. Apply
-            online in minutes.
-          </p>
-          <a
-            href="#"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-block bg-gold text-white px-8 py-3.5 rounded-full font-sans font-600 text-sm hover:bg-gold-dark transition-all hover:-translate-y-0.5 hover:shadow-xl"
-          >
-            Start Application →
-          </a>
+          <div className="relative">
+            <img
+              src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=1000"
+              alt="Admissions Hero"
+              className="w-full object-cover shadow-2xl"
+              style={{ minHeight: "400px" }}
+            />
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Important Dates */}
-      <div className="bg-gold/10 border-y border-gold/15">
-        <div className="max-w-7xl mx-auto px-6 py-10">
-          <div className="text-gold-dark text-xs font-sans tracking-[0.2em] uppercase mb-5 text-center">
+      {/* ── IMPORTANT DATES ── */}
+      <section className="bg-white py-12 px-6 border-b border-navy/10">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-center font-sans font-bold text-sm tracking-widest uppercase text-navy/60 mb-10">
             Important Dates
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {importantDates.map((d, i) => (
-              <div key={i} className="text-center">
-                <div className="text-xs font-sans text-muted mb-1">
+              <div key={i} className="text-center p-4 border-l-2 border-navy/10 hover:border-navy transition-colors">
+                <div className="text-[10px] font-sans font-bold uppercase tracking-widest text-navy/40 mb-2">
                   {d.event}
                 </div>
-                <div className="font-serif text-navy font-600 text-sm">
+                <div className="font-sans font-bold text-navy text-sm">
                   {d.date}
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Steps */}
-      <div className="max-w-7xl mx-auto px-6 py-24">
-        <div className="text-center mb-14">
-          <div className="section-label">Admission Process</div>
-          <h2 className="section-heading">
-            Six simple steps to <em className="font-light">enrolment</em>
+      {/* ── STEPS ── */}
+      <section className="py-24 bg-navy/5 px-6 md:px-12 border-b border-navy/10">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-center font-sans font-bold text-3xl md:text-4xl text-navy mb-12">
+            Admission Process
           </h2>
-        </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {steps.map((s, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-2xl p-7 border border-navy/5 hover:border-gold/30 hover:-translate-y-1 hover:shadow-xl transition-all group relative"
-            >
-              <div className="absolute top-4 right-6 text-5xl font-serif text-navy/50 blur-[1px] group-hover:text-navy/50 transition-all duration-300">
-                {s.num}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {steps.map((s, i) => (
+              <div
+                key={i}
+                className="flex flex-col group border-2 border-navy/10 bg-white hover:border-navy transition-all p-8 relative"
+              >
+                <div className="absolute top-6 right-8 text-4xl font-sans font-bold text-navy/5 group-hover:text-navy/10 transition-colors">
+                  {s.num}
+                </div>
+                <div className="mb-6 text-navy group-hover:scale-110 transition-transform origin-left">
+                  <s.icon className="w-10 h-10" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-sans font-bold text-xl text-navy mb-4">
+                  {s.title}
+                </h3>
+                <p className="font-sans text-[15px] text-navy/80 leading-relaxed flex-grow">
+                  {s.desc}
+                </p>
               </div>
-              <div className="flex items-start justify-between mb-5">
-                <s.icon className="w-6 h-6 text-gold" strokeWidth={2} />
-              </div>
-              <h3 className="font-serif text-xl text-navy font-600 mb-3">
-                {s.title}
-              </h3>
-              <p className="text-muted text-sm font-sans leading-relaxed">
-                {s.desc}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* FAQ + Enquiry Form */}
-      <div className="bg-white py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16">
+      {/* ── FAQ + ENQUIRY ── */}
+      <section className="bg-white py-24 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-20">
+            
             {/* FAQ */}
             <div>
-              <div className="section-label">FAQ</div>
-              <h2 className="section-heading mb-8">Common questions</h2>
-              <div className="space-y-3">
+              <h2 className="font-sans font-bold text-3xl text-navy mb-10">
+                Common Questions
+              </h2>
+              <div className="space-y-4">
                 {faqs.map((faq, i) => (
                   <div
                     key={i}
-                    className="border border-navy/5 rounded-xl overflow-hidden"
+                    className="border-2 border-navy/5 hover:border-navy/10 transition-colors"
                   >
                     <button
                       onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                      className="w-full flex items-center justify-between px-5 py-4 text-left text-sm font-sans font-600 text-navy hover:bg-cream transition-colors"
+                      className="w-full flex items-center justify-between px-6 py-5 text-left text-sm font-sans font-bold text-navy hover:bg-navy/5 transition-colors"
                     >
                       {faq.q}
-                      <svg
-                        className={`w-4 h-4 text-gold flex-shrink-0 ml-3 transition-transform ${openFaq === i ? "rotate-180" : ""}`}
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
+                      <ArrowRight className={`w-4 h-4 text-navy transition-transform ${openFaq === i ? "rotate-90" : ""}`} />
                     </button>
                     {openFaq === i && (
-                      <div className="px-5 pb-4 text-sm font-sans text-muted leading-relaxed border-t border-cream">
+                      <div className="px-6 pb-5 text-sm font-sans text-navy/70 leading-relaxed border-t border-navy/5 pt-4">
                         {faq.a}
                       </div>
                     )}
@@ -235,96 +224,109 @@ export default function Admissions() {
 
             {/* Enquiry Form */}
             <div>
-              <div className="section-label">Quick Enquiry</div>
-              <h2 className="section-heading mb-8">Get in touch</h2>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-xs font-sans font-600 text-navy/60 uppercase tracking-wider block mb-1.5">
-                      Full Name *
+              <div className="bg-navy/5 border-2 border-navy/10 p-10">
+                <h2 className="font-sans font-bold text-3xl text-navy mb-8">
+                  Get in Touch
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-sans font-bold text-navy/60 uppercase tracking-widest ml-1">
+                        Full Name *
+                      </label>
+                      <input
+                        name="name"
+                        value={form.name}
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-white border-2 border-navy/10 px-4 py-4 text-sm font-sans text-navy outline-none focus:border-navy transition-colors"
+                        placeholder="e.g. John Doe"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-sans font-bold text-navy/60 uppercase tracking-widest ml-1">
+                        Phone Number *
+                      </label>
+                      <input
+                        name="phone"
+                        value={form.phone}
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-white border-2 border-navy/10 px-4 py-4 text-sm font-sans text-navy outline-none focus:border-navy transition-colors"
+                        placeholder="+91 98765 43210"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-sans font-bold text-navy/60 uppercase tracking-widest ml-1">
+                      Email Address
                     </label>
                     <input
-                      name="name"
-                      value={form.name}
+                      name="email"
+                      value={form.email}
                       onChange={handleChange}
-                      required
-                      className="w-full bg-cream border border-navy/10 rounded-xl px-4 py-3 text-sm font-sans text-navy outline-none focus:border-gold/50 transition-colors"
-                      placeholder="Your name"
+                      type="email"
+                      className="w-full bg-white border-2 border-navy/10 px-4 py-4 text-sm font-sans text-navy outline-none focus:border-navy transition-colors"
+                      placeholder="you@email.com"
                     />
                   </div>
-                  <div>
-                    <label className="text-xs font-sans font-600 text-navy/60 uppercase tracking-wider block mb-1.5">
-                      Phone *
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-sans font-bold text-navy/60 uppercase tracking-widest ml-1">
+                      Program of Interest
                     </label>
-                    <input
-                      name="phone"
-                      value={form.phone}
+                    <div className="relative">
+                      <select
+                        name="program"
+                        value={form.program}
+                        onChange={handleChange}
+                        className="w-full bg-white border-2 border-navy/10 px-4 py-4 text-sm font-sans text-navy outline-none focus:border-navy transition-colors appearance-none"
+                      >
+                        <option value="">Select a program...</option>
+                        <option>B.A – English</option>
+                        <option>B.Sc – Psychology</option>
+                        <option>BBA – Business Administration</option>
+                        <option>B.Com – General</option>
+                        <option>B.Com – Accounting & Finance</option>
+                        <option>Other</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-navy/40">
+                        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-sans font-bold text-navy/60 uppercase tracking-widest ml-1">
+                      Your Message
+                    </label>
+                    <textarea
+                      name="message"
+                      value={form.message}
                       onChange={handleChange}
-                      required
-                      className="w-full bg-cream border border-navy/10 rounded-xl px-4 py-3 text-sm font-sans text-navy outline-none focus:border-gold/50 transition-colors"
-                      placeholder="Mobile number"
+                      rows={3}
+                      className="w-full bg-white border-2 border-navy/10 px-4 py-4 text-sm font-sans text-navy outline-none focus:border-navy transition-colors resize-none"
+                      placeholder="How can we help you?"
                     />
                   </div>
-                </div>
-                <div>
-                  <label className="text-xs font-sans font-600 text-navy/60 uppercase tracking-wider block mb-1.5">
-                    Email
-                  </label>
-                  <input
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    type="email"
-                    className="w-full bg-cream border border-navy/10 rounded-xl px-4 py-3 text-sm font-sans text-navy outline-none focus:border-gold/50 transition-colors"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="text-xs font-sans font-600 text-navy/60 uppercase tracking-wider block mb-1.5">
-                    Program of Interest
-                  </label>
-                  <select
-                    name="program"
-                    value={form.program}
-                    onChange={handleChange}
-                    className="w-full bg-cream border border-navy/10 rounded-xl px-4 py-3 text-sm font-sans text-navy outline-none focus:border-gold/50 transition-colors"
+                  <button
+                    type="submit"
+                    className="bg-navy text-white w-full py-5 font-sans font-bold text-sm tracking-wide flex items-center justify-center gap-3 hover:bg-navy-light transition-all"
                   >
-                    <option value="">Select a program...</option>
-                    <option>B.A – English</option>
-                    <option>B.Sc – Psychology</option>
-                    <option>BBA – Business Administration</option>
-                    <option>B.Com – General</option>
-                    <option>B.Com – Accounting & Finance</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="text-xs font-sans font-600 text-navy/60 uppercase tracking-wider block mb-1.5">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    rows={3}
-                    className="w-full bg-cream border border-navy/10 rounded-xl px-4 py-3 text-sm font-sans text-navy outline-none focus:border-gold/50 transition-colors resize-none"
-                    placeholder="Any specific questions..."
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="btn-primary w-full text-base py-4"
-                >
-                  Submit Enquiry →
-                </button>
-                <p className="text-muted text-xs font-sans text-center">
-                  We'll contact you within 24 hours. No spam, ever.
-                </p>
-              </form>
+                    Submit Enquiry
+                    <ArrowRight className="w-5 h-5 rounded-full border border-white p-0.5" />
+                  </button>
+                  <p className="text-navy/40 text-[10px] font-sans font-bold text-center uppercase tracking-widest">
+                    We'll contact you within 24 hours
+                  </p>
+                </form>
+              </div>
             </div>
+
           </div>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 }
