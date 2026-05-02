@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Newspaper } from "lucide-react";
+import { Newspaper, ArrowRight } from "lucide-react";
 import { COLLEGE_NAME } from "../constants/college";
 import { ADMISSION_YEAR } from "../constants/site";
 
@@ -96,146 +96,172 @@ export default function NewsEvents() {
   const rest = filtered.filter((i) => !i.featured);
 
   return (
-    <div className="min-h-screen bg-cream">
-      {/* Header */}
-      <div className="bg-navy pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy to-navy-light" />
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="text-gold text-xs font-sans tracking-[0.2em] uppercase mb-3">
-            Stay Updated
+    <div className="overflow-x-hidden font-sans">
+      
+      {/* ── HERO SECTION ── */}
+      <section className="bg-navy/5 pt-16 pb-24 md:pt-24 md:pb-32 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="pr-0 md:pr-12">
+            <div className="text-gold text-xs font-sans font-bold tracking-[0.2em] uppercase mb-4">
+              Stay Updated
+            </div>
+            <h1 className="font-sans font-bold text-5xl md:text-7xl text-navy leading-tight tracking-tight mb-6">
+              News & Events
+            </h1>
+            <p className="text-navy/80 font-sans text-lg leading-relaxed mb-8">
+              The latest from {COLLEGE_NAME} — achievements, events, launches, and campus happenings. Stay connected with our vibrant community.
+            </p>
           </div>
-          <h1 className="font-serif text-5xl md:text-6xl text-white mb-4">
-            News &amp; Events
-          </h1>
-          <p className="text-white/50 font-sans text-lg max-w-xl">
-            The latest from {COLLEGE_NAME} — achievements, events, launches, and
-            campus happenings.
-          </p>
+          <div className="relative">
+            <img
+              src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1000"
+              alt="News Hero"
+              className="w-full object-cover shadow-2xl"
+              style={{ minHeight: "400px" }}
+            />
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Featured */}
+      {/* ── FEATURED ITEM ── */}
       {featured && (
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="section-label mb-6">Featured</div>
-          <div className="bg-white rounded-3xl overflow-hidden border border-navy/5 grid md:grid-cols-2 hover:shadow-xl transition-all">
-            <div className="relative h-72 md:h-auto">
-              <img
-                src={featured.img}
-                alt={featured.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute top-5 left-5 flex gap-2">
-                <span className="bg-gold text-white text-[10px] font-sans font-600 tracking-widest uppercase px-3 py-1 rounded-full">
-                  {featured.type}
-                </span>
-                <span className="bg-navy text-white text-[10px] font-sans tracking-widest uppercase px-3 py-1 rounded-full">
-                  {featured.category}
-                </span>
-              </div>
-            </div>
-            <div className="p-10 flex flex-col justify-center">
-              <div className="text-muted text-xs font-sans mb-4">
-                {featured.date}
-              </div>
-              <h2 className="font-serif text-3xl text-navy font-600 leading-snug mb-4">
-                {featured.title}
-              </h2>
-              <p className="text-muted font-sans text-sm leading-relaxed mb-6">
-                {featured.excerpt}
-              </p>
-              <button className="self-start btn-primary">Read More →</button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Filters + Grid */}
-      <div className="max-w-7xl mx-auto px-6 pb-20">
-        <div className="flex gap-2 flex-wrap mb-10">
-          {categories.map((c) => (
-            <button
-              key={c}
-              onClick={() => setActiveFilter(c)}
-              className={`px-4 py-2 rounded-full text-xs font-sans font-600 transition-all ${activeFilter === c ? "bg-navy text-white" : "bg-white border border-navy/10 text-navy/60 hover:text-navy"}`}
-            >
-              {c}
-            </button>
-          ))}
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {rest.map((item) => (
-            <article
-              key={item.id}
-              className="bg-white rounded-2xl overflow-hidden border border-navy/5 hover:-translate-y-1 hover:shadow-xl transition-all group"
-            >
-              <div className="relative h-48 overflow-hidden">
+        <section className="py-24 bg-white px-6 md:px-12 border-b border-navy/10">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-sm font-sans font-bold tracking-widest uppercase text-navy/40 mb-8">
+              Featured Story
+            </h2>
+            <div className="grid md:grid-cols-2 bg-navy/5 border-2 border-navy/10 group overflow-hidden">
+              <div className="relative h-80 md:h-auto overflow-hidden">
                 <img
-                  src={item.img}
-                  alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  src={featured.img}
+                  alt={featured.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute top-4 left-4 flex gap-2">
-                  <span
-                    className={`text-[10px] font-sans font-600 tracking-widest uppercase px-2.5 py-1 rounded-full ${item.type === "News" ? "bg-navy text-white" : "bg-gold text-white"}`}
-                  >
-                    {item.type}
+                <div className="absolute top-6 left-6 flex gap-3">
+                  <span className="bg-navy text-white text-[10px] font-sans font-bold tracking-widest uppercase px-4 py-1.5">
+                    {featured.type}
+                  </span>
+                  <span className="bg-white text-navy text-[10px] font-sans font-bold tracking-widest uppercase px-4 py-1.5 border border-navy/10">
+                    {featured.category}
                   </span>
                 </div>
               </div>
-              <div className="p-6">
-                <div className="text-muted text-xs font-sans mb-2">
-                  {item.date} · {item.category}
+              <div className="p-10 md:p-16 flex flex-col justify-center bg-white">
+                <div className="text-[11px] font-sans font-bold uppercase tracking-widest text-navy/40 mb-4">
+                  {featured.date}
                 </div>
-                <h3 className="font-serif text-lg text-navy font-600 leading-snug mb-3">
-                  {item.title}
+                <h3 className="font-sans font-bold text-3xl text-navy leading-tight mb-6">
+                  {featured.title}
                 </h3>
-                <p className="text-muted text-sm font-sans leading-relaxed line-clamp-2 mb-5">
-                  {item.excerpt}
+                <p className="text-navy/70 font-sans text-lg leading-relaxed mb-10">
+                  {featured.excerpt}
                 </p>
-                <button className="text-gold font-sans text-sm font-600 hover:text-gold-dark transition-colors flex items-center gap-1">
-                  Read More <span>→</span>
+                <button className="bg-navy text-white px-8 py-4 font-sans font-bold text-sm inline-flex items-center gap-3 w-max hover:bg-navy-light transition-all">
+                  Read Full Story
+                  <ArrowRight className="w-5 h-5 rounded-full border border-white p-0.5" />
                 </button>
               </div>
-            </article>
-          ))}
-        </div>
-
-        {filtered.length === 0 && (
-          <div className="text-center py-20">
-            <Newspaper
-              className="w-12 h-12 text-navy/30 mx-auto mb-4"
-              strokeWidth={2}
-            />
-            <div className="font-serif text-2xl text-navy/40">
-              No items in this category
             </div>
           </div>
-        )}
-      </div>
+        </section>
+      )}
 
-      {/* Newsletter CTA */}
-      <div className="bg-white border-t border-cream py-20">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <div className="section-label">Stay Updated</div>
-          <h2 className="font-serif text-3xl text-navy mb-4">
+      {/* ── FILTERS + GRID ── */}
+      <section className="py-24 bg-navy/5 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          
+          {/* Filters */}
+          <div className="flex gap-4 flex-wrap mb-16">
+            {categories.map((c) => (
+              <button
+                key={c}
+                onClick={() => setActiveFilter(c)}
+                className={`px-6 py-3 font-sans font-bold text-[11px] tracking-widest uppercase transition-all border-2 ${activeFilter === c ? "bg-navy border-navy text-white shadow-lg" : "bg-white border-navy/10 text-navy/60 hover:border-navy hover:text-navy"}`}
+              >
+                {c}
+              </button>
+            ))}
+          </div>
+
+          {/* Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {rest.map((item) => (
+              <article
+                key={item.id}
+                className="flex flex-col group border-2 border-navy/10 bg-white hover:border-navy transition-all overflow-hidden"
+              >
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute top-5 left-5 flex gap-2">
+                    <span
+                      className={`text-[9px] font-sans font-bold tracking-widest uppercase px-3 py-1.5 ${item.type === "News" ? "bg-navy text-white" : "bg-white text-navy border border-navy/10"}`}
+                    >
+                      {item.type}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-8 flex-grow flex flex-col">
+                  <div className="text-[10px] font-sans font-bold uppercase tracking-widest text-navy/40 mb-3">
+                    {item.date} · {item.category}
+                  </div>
+                  <h3 className="font-sans font-bold text-xl text-navy leading-snug mb-4 group-hover:text-navy-light transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-navy/70 font-sans text-[15px] leading-relaxed line-clamp-3 mb-8 flex-grow">
+                    {item.excerpt}
+                  </p>
+                  <button className="text-navy font-sans font-bold text-xs tracking-widest uppercase flex items-center gap-2 hover:gap-3 transition-all border-b-2 border-navy/5 w-max pb-1">
+                    Read More <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          {filtered.length === 0 && (
+            <div className="text-center py-32 border-2 border-dashed border-navy/10">
+              <Newspaper
+                className="w-16 h-16 text-navy/10 mx-auto mb-6"
+                strokeWidth={1.5}
+              />
+              <div className="font-sans font-bold text-2xl text-navy/30 tracking-tight">
+                No items found in this category
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ── NEWSLETTER CTA ── */}
+      <section className="bg-white py-24 px-6 md:px-12 border-t border-navy/10">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="font-sans font-bold text-4xl text-navy mb-6">
             Never miss an update
           </h2>
-          <p className="text-muted font-sans mb-8">
-            Get the latest news, events, and scholarship announcements in your
-            inbox.
+          <p className="text-navy/70 font-sans text-lg mb-12 max-w-2xl mx-auto leading-relaxed">
+            Get the latest news, events, and scholarship announcements delivered directly to your inbox.
           </p>
-          <div className="flex gap-3 max-w-sm mx-auto">
+          <form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
             <input
               type="email"
-              placeholder="Enter your email"
-              className="flex-1 bg-cream border border-navy/10 rounded-full px-5 py-3 text-sm font-sans text-navy outline-none focus:border-gold/50 transition-colors"
+              placeholder="your@email.com"
+              className="flex-1 bg-navy/5 border-2 border-navy/10 px-6 py-4 text-sm font-sans text-navy outline-none focus:border-navy transition-colors"
             />
-            <button className="btn-primary flex-shrink-0">Subscribe</button>
-          </div>
+            <button className="bg-navy text-white px-8 py-4 font-sans font-bold text-sm tracking-wide flex items-center justify-center gap-3 hover:bg-navy-light transition-all whitespace-nowrap">
+              Subscribe
+              <ArrowRight className="w-5 h-5 rounded-full border border-white p-0.5" />
+            </button>
+          </form>
+          <p className="text-navy/40 text-[10px] font-sans font-bold uppercase tracking-widest mt-6">
+            We'll contact you with important updates only
+          </p>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 }
