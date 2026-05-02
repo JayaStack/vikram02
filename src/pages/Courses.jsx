@@ -25,7 +25,7 @@ export default function Courses() {
               src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000"
               alt="Courses Hero"
               className="w-full object-cover shadow-2xl"
-              style={{ minHeight: "400px" }}
+              style={{ minHeight: "240px" }}
             />
           </div>
         </div>
@@ -81,10 +81,13 @@ export default function Courses() {
               Not sure which program suits you? Our expert counsellors can help you decide based on your interests and career goals.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <button className="bg-navy text-white px-8 py-4 font-sans font-bold text-sm tracking-wide flex items-center justify-center gap-3 hover:bg-navy-light transition-all">
+              <Link
+                to="/contact"
+                className="bg-navy text-white px-8 py-4 font-sans font-bold text-sm tracking-wide flex items-center justify-center gap-3 hover:bg-navy-light transition-all"
+              >
                 Chat with Counselor
                 <ArrowRight className="w-5 h-5 rounded-full border border-white p-0.5" />
-              </button>
+              </Link>
               <Link 
                 to="/contact" 
                 className="bg-white text-navy border-2 border-navy px-8 py-4 font-sans font-bold text-sm tracking-wide flex items-center justify-center gap-3 hover:bg-navy hover:text-white transition-all"
