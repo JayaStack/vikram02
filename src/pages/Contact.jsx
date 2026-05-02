@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CircleCheck, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { CircleCheck, Mail, MapPin, MessageCircle, Phone, ArrowRight } from "lucide-react";
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -49,276 +49,302 @@ export default function Contact() {
   ];
 
   return (
-    <div className="min-h-screen bg-cream">
-      {/* Header */}
-      <div className="bg-navy pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy to-navy-light" />
-        <div className="relative max-w-7xl mx-auto px-6">
-          <div className="text-gold text-xs font-sans tracking-[0.2em] uppercase mb-3">
-            Get In Touch
-          </div>
-          <h1 className="font-serif text-5xl md:text-6xl text-white mb-4">
-            We'd love to
-            <br />
-            <em className="font-light">hear from you.</em>
-          </h1>
-          <p className="text-white/50 font-sans text-lg max-w-xl">
-            Whether you have questions about admissions, courses, or just want
-            to visit campus — we're here.
-          </p>
-        </div>
-      </div>
-
-      {/* Contact Cards */}
-      <div className="max-w-7xl mx-auto px-6 -mt-8 relative z-10">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {contactCards.map((c, i) => (
-            <div
-              key={i}
-              className="bg-white rounded-2xl p-6 border border-navy/5 hover:shadow-xl hover:-translate-y-1 transition-all"
-            >
-              <c.icon className="w-6 h-6 text-gold mb-4" strokeWidth={2} />
-              <h3 className="font-serif text-lg text-navy font-600 mb-2">
-                {c.title}
-              </h3>
-              {c.lines.map((l) => (
-                <div key={l} className="text-muted text-sm font-sans">
-                  {l}
-                </div>
-              ))}
-              <a
-                href={c.action.href}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 inline-block text-gold font-sans text-sm font-600 hover:text-gold-dark transition-colors"
-              >
-                {c.action.label} →
-              </a>
+    <div className="overflow-x-hidden font-sans">
+      
+      {/* ── HERO SECTION ── */}
+      <section className="bg-navy/5 pt-16 pb-24 md:pt-24 md:pb-32 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="pr-0 md:pr-12">
+            <div className="text-gold text-xs font-sans font-bold tracking-[0.2em] uppercase mb-4">
+              Contact Us
             </div>
-          ))}
+            <h1 className="font-sans font-bold text-5xl md:text-7xl text-navy leading-tight tracking-tight mb-6">
+              We'd love to hear from you.
+            </h1>
+            <p className="text-navy/80 font-sans text-lg leading-relaxed mb-8">
+              Whether you have questions about admissions, courses, or just want to visit our campus — we're here to help you every step of the way.
+            </p>
+          </div>
+          <div className="relative">
+            <img
+              src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?q=80&w=1000"
+              alt="Contact Hero"
+              className="w-full object-cover shadow-2xl"
+              style={{ minHeight: "400px" }}
+            />
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Form + Info */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid lg:grid-cols-2 gap-16">
-          {/* Form */}
-          <div className="bg-white rounded-2xl p-10 border border-navy/5">
-            <div className="section-label">Quick Enquiry</div>
-            <h2 className="font-serif text-3xl text-navy mb-8">
-              Send us a message
-            </h2>
-            {sent ? (
-              <div className="text-center py-12">
-                <CircleCheck
-                  className="w-12 h-12 text-emerald-600 mx-auto mb-4"
-                  strokeWidth={2}
-                />
-                <h3 className="font-serif text-2xl text-navy mb-2">
-                  Message Received!
+      {/* ── CONTACT CARDS ── */}
+      <section className="py-24 bg-white px-6 md:px-12 border-b border-navy/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {contactCards.map((c, i) => (
+              <div
+                key={i}
+                className="flex flex-col group border-2 border-navy/10 bg-navy/5 hover:border-navy hover:bg-white transition-all p-8"
+              >
+                <div className="mb-6 text-navy group-hover:scale-110 transition-transform origin-left">
+                  <c.icon className="w-10 h-10" strokeWidth={1.5} />
+                </div>
+                <h3 className="font-sans font-bold text-xl text-navy mb-4">
+                  {c.title}
                 </h3>
-                <p className="text-muted font-sans mb-6">
-                  Our team will get back to you within 24 hours.
-                </p>
-                <button
-                  onClick={() => setSent(false)}
-                  className="btn-outline-dark"
+                <div className="space-y-1 mb-8 flex-grow">
+                  {c.lines.map((l) => (
+                    <div key={l} className="text-navy/70 font-sans text-[15px] leading-relaxed">
+                      {l}
+                    </div>
+                  ))}
+                </div>
+                <a
+                  href={c.action.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-navy font-sans font-bold text-xs tracking-widest uppercase flex items-center gap-2 hover:gap-3 transition-all border-b-2 border-navy/5 w-max pb-1"
                 >
-                  Send Another
-                </button>
+                  {c.action.label} <ArrowRight className="w-4 h-4" />
+                </a>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="text-xs font-sans font-600 text-navy/50 uppercase tracking-wider block mb-1.5">
-                      Name *
-                    </label>
-                    <input
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Your full name"
-                      className="w-full bg-cream border border-navy/10 rounded-xl px-4 py-3 text-sm font-sans text-navy outline-none focus:border-gold/50 transition-colors"
-                    />
-                  </div>
-                  <div>
-                    <label className="text-xs font-sans font-600 text-navy/50 uppercase tracking-wider block mb-1.5">
-                      Phone *
-                    </label>
-                    <input
-                      name="phone"
-                      value={form.phone}
-                      onChange={handleChange}
-                      required
-                      placeholder="Mobile number"
-                      className="w-full bg-cream border border-navy/10 rounded-xl px-4 py-3 text-sm font-sans text-navy outline-none focus:border-gold/50 transition-colors"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label className="text-xs font-sans font-600 text-navy/50 uppercase tracking-wider block mb-1.5">
-                    Email
-                  </label>
-                  <input
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    type="email"
-                    placeholder="your@email.com"
-                    className="w-full bg-cream border border-navy/10 rounded-xl px-4 py-3 text-sm font-sans text-navy outline-none focus:border-gold/50 transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="text-xs font-sans font-600 text-navy/50 uppercase tracking-wider block mb-1.5">
-                    Subject
-                  </label>
-                  <select
-                    name="subject"
-                    value={form.subject}
-                    onChange={handleChange}
-                    className="w-full bg-cream border border-navy/10 rounded-xl px-4 py-3 text-sm font-sans text-navy outline-none focus:border-gold/50 transition-colors"
-                  >
-                    <option value="">Select a topic...</option>
-                    <option>Admissions Enquiry</option>
-                    <option>Course Information</option>
-                    <option>Fee Structure</option>
-                    <option>Campus Visit</option>
-                    <option>Placement Cell</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-                <div>
-                  <label className="text-xs font-sans font-600 text-navy/50 uppercase tracking-wider block mb-1.5">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    rows={4}
-                    placeholder="How can we help you?"
-                    className="w-full bg-cream border border-navy/10 rounded-xl px-4 py-3 text-sm font-sans text-navy outline-none focus:border-gold/50 transition-colors resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="btn-primary w-full py-4 text-base"
-                >
-                  Send Message →
-                </button>
-                <p className="text-center text-muted text-xs font-sans">
-                  We respond within 24 hours. No spam.
-                </p>
-              </form>
-            )}
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* Office Hours + Departments */}
-          <div className="space-y-8">
-            <div className="bg-white rounded-2xl p-8 border border-navy/5">
-              <h3 className="font-serif text-2xl text-navy mb-6">
-                Office Hours
-              </h3>
-              <div className="space-y-3">
-                {[
-                  ["Monday – Friday", "8:30 AM – 5:00 PM"],
-                  ["Saturday", "9:00 AM – 1:00 PM"],
-                  ["Sunday", "Closed"],
-                ].map(([day, time]) => (
-                  <div
-                    key={day}
-                    className="flex justify-between items-center text-sm font-sans border-b border-cream py-2 last:border-0"
+      {/* ── FORM + INFO ── */}
+      <section className="py-24 bg-navy/5 px-6 md:px-12 border-b border-navy/10">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-20">
+            
+            {/* Form */}
+            <div className="bg-white border-2 border-navy/10 p-10">
+              <h2 className="font-sans font-bold text-3xl text-navy mb-8">
+                Send us a Message
+              </h2>
+              {sent ? (
+                <div className="text-center py-16">
+                  <CircleCheck
+                    className="w-16 h-16 text-navy mx-auto mb-6"
+                    strokeWidth={1.5}
+                  />
+                  <h3 className="font-sans font-bold text-2xl text-navy mb-4">
+                    Message Received!
+                  </h3>
+                  <p className="text-navy/70 font-sans text-lg mb-10">
+                    Our team will get back to you within 24 hours.
+                  </p>
+                  <button
+                    onClick={() => setSent(false)}
+                    className="bg-navy text-white px-8 py-4 font-sans font-bold text-sm tracking-wide flex items-center justify-center gap-3 hover:bg-navy-light transition-all"
                   >
-                    <span className="text-navy/70">{day}</span>
-                    <span
-                      className={`font-600 ${day === "Sunday" ? "text-red-400" : "text-navy"}`}
+                    Send Another
+                    <ArrowRight className="w-5 h-5 rounded-full border border-white p-0.5" />
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-sans font-bold text-navy/60 uppercase tracking-widest ml-1">
+                        Full Name *
+                      </label>
+                      <input
+                        name="name"
+                        value={form.name}
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-navy/5 border-2 border-navy/10 px-4 py-4 text-sm font-sans text-navy outline-none focus:border-navy transition-colors"
+                        placeholder="e.g. John Doe"
+                      />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-[11px] font-sans font-bold text-navy/60 uppercase tracking-widest ml-1">
+                        Phone Number *
+                      </label>
+                      <input
+                        name="phone"
+                        value={form.phone}
+                        onChange={handleChange}
+                        required
+                        className="w-full bg-navy/5 border-2 border-navy/10 px-4 py-4 text-sm font-sans text-navy outline-none focus:border-navy transition-colors"
+                        placeholder="+91 98765 43210"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-sans font-bold text-navy/60 uppercase tracking-widest ml-1">
+                      Email Address
+                    </label>
+                    <input
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      type="email"
+                      className="w-full bg-navy/5 border-2 border-navy/10 px-4 py-4 text-sm font-sans text-navy outline-none focus:border-navy transition-colors"
+                      placeholder="you@email.com"
+                    />
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-sans font-bold text-navy/60 uppercase tracking-widest ml-1">
+                      Subject
+                    </label>
+                    <div className="relative">
+                      <select
+                        name="subject"
+                        value={form.subject}
+                        onChange={handleChange}
+                        className="w-full bg-navy/5 border-2 border-navy/10 px-4 py-4 text-sm font-sans text-navy outline-none focus:border-navy transition-colors appearance-none"
+                      >
+                        <option value="">Select a topic...</option>
+                        <option>Admissions Enquiry</option>
+                        <option>Course Information</option>
+                        <option>Fee Structure</option>
+                        <option>Campus Visit</option>
+                        <option>Placement Cell</option>
+                        <option>Other</option>
+                      </select>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-navy/40">
+                        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="space-y-1.5">
+                    <label className="text-[11px] font-sans font-bold text-navy/60 uppercase tracking-widest ml-1">
+                      Your Message
+                    </label>
+                    <textarea
+                      name="message"
+                      value={form.message}
+                      onChange={handleChange}
+                      rows={4}
+                      className="w-full bg-navy/5 border-2 border-navy/10 px-4 py-4 text-sm font-sans text-navy outline-none focus:border-navy transition-colors resize-none"
+                      placeholder="How can we help you?"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    className="bg-navy text-white w-full py-5 font-sans font-bold text-sm tracking-wide flex items-center justify-center gap-3 hover:bg-navy-light transition-all"
+                  >
+                    Send Message
+                    <ArrowRight className="w-5 h-5 rounded-full border border-white p-0.5" />
+                  </button>
+                  <p className="text-navy/40 text-[10px] font-sans font-bold text-center uppercase tracking-widest">
+                    We respond within 24 hours. No spam.
+                  </p>
+                </form>
+              )}
+            </div>
+
+            {/* Office Hours + Departments */}
+            <div className="space-y-10">
+              
+              <div className="bg-white border-2 border-navy/10 p-10">
+                <h3 className="font-sans font-bold text-2xl text-navy mb-8 uppercase tracking-tight">
+                  Office Hours
+                </h3>
+                <div className="space-y-4">
+                  {[
+                    ["Monday – Friday", "8:30 AM – 5:00 PM"],
+                    ["Saturday", "9:00 AM – 1:00 PM"],
+                    ["Sunday", "Closed"],
+                  ].map(([day, time]) => (
+                    <div
+                      key={day}
+                      className="flex justify-between items-center text-[15px] font-sans border-b-2 border-navy/5 py-3 last:border-0"
                     >
-                      {time}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 border border-navy/5">
-              <h3 className="font-serif text-2xl text-navy mb-6">
-                Department Contacts
-              </h3>
-              <div className="space-y-4">
-                {[
-                  {
-                    dept: "Admissions Office",
-                    email: "admissions@aias.edu.in",
-                    phone: "044-26212089",
-                  },
-                  {
-                    dept: "Academic Section",
-                    email: "academics@aias.edu.in",
-                    phone: "044-26212090",
-                  },
-                  {
-                    dept: "Placement Cell",
-                    email: "placements@aias.edu.in",
-                    phone: "044-26212091",
-                  },
-                  {
-                    dept: "Hostel Office",
-                    email: "hostel@aias.edu.in",
-                    phone: "044-26212092",
-                  },
-                ].map((d) => (
-                  <div
-                    key={d.dept}
-                    className="border-b border-cream pb-4 last:border-0 last:pb-0"
-                  >
-                    <div className="font-sans font-600 text-navy text-sm">
-                      {d.dept}
-                    </div>
-                    <div className="flex gap-4 mt-1">
-                      <a
-                        href={`mailto:${d.email}`}
-                        className="text-gold text-xs font-sans hover:text-gold-dark transition-colors"
+                      <span className="text-navy/60 font-bold">{day}</span>
+                      <span
+                        className={`font-bold ${day === "Sunday" ? "text-red-500" : "text-navy"}`}
                       >
-                        {d.email}
-                      </a>
-                      <a
-                        href={`tel:${d.phone}`}
-                        className="text-muted text-xs font-sans hover:text-navy transition-colors"
-                      >
-                        {d.phone}
-                      </a>
+                        {time}
+                      </span>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div className="bg-navy rounded-2xl p-8">
-              <div className="text-gold text-xs font-sans tracking-widest uppercase mb-3">
-                Fastest Response
+              <div className="bg-white border-2 border-navy/10 p-10">
+                <h3 className="font-sans font-bold text-2xl text-navy mb-8 uppercase tracking-tight">
+                  Department Contacts
+                </h3>
+                <div className="grid gap-6">
+                  {[
+                    {
+                      dept: "Admissions Office",
+                      email: "admissions@aias.edu.in",
+                      phone: "044-26212089",
+                    },
+                    {
+                      dept: "Academic Section",
+                      email: "academics@aias.edu.in",
+                      phone: "044-26212090",
+                    },
+                    {
+                      dept: "Placement Cell",
+                      email: "placements@aias.edu.in",
+                      phone: "044-26212091",
+                    },
+                    {
+                      dept: "Hostel Office",
+                      email: "hostel@aias.edu.in",
+                      phone: "044-26212092",
+                    },
+                  ].map((d) => (
+                    <div
+                      key={d.dept}
+                      className="border-l-4 border-navy/10 pl-6 py-1 hover:border-navy transition-colors"
+                    >
+                      <div className="font-sans font-bold text-navy text-[15px] mb-2 uppercase tracking-wide">
+                        {d.dept}
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+                        <a
+                          href={`mailto:${d.email}`}
+                          className="text-navy/60 font-sans text-sm font-bold hover:text-navy transition-colors"
+                        >
+                          {d.email}
+                        </a>
+                        <a
+                          href={`tel:${d.phone}`}
+                          className="text-navy/60 font-sans text-sm font-bold hover:text-navy transition-colors"
+                        >
+                          {d.phone}
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <h3 className="font-serif text-2xl text-white mb-2">
-                Chat on WhatsApp
-              </h3>
-              <p className="text-white/50 text-sm font-sans mb-5">
-                Get answers in minutes. Our counsellors respond within 30
-                minutes during office hours.
-              </p>
-              <a
-                href="https://wa.me/914426212089?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20admissions"
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-[#25D366] text-white px-6 py-3 rounded-full text-sm font-sans font-600 hover:opacity-90 transition-opacity"
-              >
-                <MessageCircle className="w-4 h-4" strokeWidth={2} />
-                Open WhatsApp
-              </a>
+
+              <div className="bg-navy p-10 border-4 border-navy/10 shadow-xl">
+                <div className="text-gold text-[10px] font-sans font-bold tracking-[0.2em] uppercase mb-4">
+                  Fastest Response
+                </div>
+                <h3 className="font-sans font-bold text-3xl text-white mb-4">
+                  Chat on WhatsApp
+                </h3>
+                <p className="text-white/70 font-sans text-[15px] mb-8 leading-relaxed">
+                  Get answers in minutes. Our counsellors respond within 30 minutes during office hours.
+                </p>
+                <a
+                  href="https://wa.me/914426212089?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20admissions"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-white text-navy px-8 py-4 font-sans font-bold text-sm inline-flex items-center gap-3 hover:bg-cream transition-colors"
+                >
+                  <MessageCircle className="w-5 h-5" strokeWidth={2} />
+                  Open WhatsApp
+                </a>
+              </div>
+              
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 }
