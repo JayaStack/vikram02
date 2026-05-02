@@ -9,6 +9,8 @@ import {
   Monitor,
   Theater,
   UtensilsCrossed,
+  ArrowRight,
+  MapPin
 } from "lucide-react";
 
 const facilities = [
@@ -27,7 +29,7 @@ const facilities = [
   {
     title: "Science Laboratories",
     desc: "Fully equipped Physics, Chemistry, Biology, and Psychology labs with modern instruments and safety protocols.",
-    img: "https://images.unsplash.com/photo-1532094349884-543559059e1d?q=80&w=800",
+    img: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=800",
     icon: FlaskConical,
   },
   {
@@ -73,140 +75,117 @@ const safety = [
 
 export default function Campus() {
   const [active, setActive] = useState(0);
-  const ActiveIcon = facilities[active].icon;
 
   return (
-    <div className="min-h-screen bg-cream">
-      {/* Hero */}
-      <div className="relative h-[70vh] min-h-[500px] overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1920"
-          alt="Campus"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 max-w-7xl mx-auto px-6 pb-16">
-          <div className="text-gold text-xs font-sans tracking-[0.2em] uppercase mb-3">
-            Campus Life
+    <div className="overflow-x-hidden font-sans">
+      
+      {/* ── HERO SECTION ── */}
+      <section className="bg-navy/5 pt-16 pb-24 md:pt-24 md:pb-32 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+          <div className="pr-0 md:pr-12">
+            <h1 className="font-sans font-bold text-5xl md:text-7xl text-navy leading-tight tracking-tight mb-6">
+              Campus Life
+            </h1>
+            <p className="text-navy/80 font-sans text-lg leading-relaxed mb-8">
+              A 5-acre campus built for modern learners in the heart of Anna Nagar. Experience world-class infrastructure, unwavering safety, and a vibrant community.
+            </p>
+            <Link
+              to="/admissions"
+              className="bg-navy text-white px-6 py-4 font-sans font-bold text-sm inline-flex items-center gap-3 hover:bg-navy-light transition-colors"
+            >
+              Book a campus tour
+              <ArrowRight className="w-5 h-5 rounded-full border border-white p-0.5" />
+            </Link>
           </div>
-          <h1 className="font-serif text-5xl md:text-6xl text-white mb-4">
-            A space built for
-            <br />
-            <em className="font-light">modern learners</em>
-          </h1>
-          <p className="text-white/60 font-sans text-lg max-w-xl">
-            5-acre campus in the heart of Anna Nagar with world-class
-            infrastructure, safety, and community.
-          </p>
+          <div className="relative">
+            <img
+              src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=1920"
+              alt="Campus Hero"
+              className="w-full object-cover shadow-2xl"
+              style={{ minHeight: "400px" }}
+            />
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Facilities Interactive Gallery */}
-      <div className="max-w-7xl mx-auto px-6 py-24">
-        <div className="text-center mb-14">
-          <div className="section-label">Infrastructure</div>
-          <h2 className="section-heading">
-            Every corner is designed <em className="font-light">for you</em>
+      {/* ── FACILITIES INTERACTIVE GALLERY ── */}
+      <section className="py-24 bg-white px-6 md:px-12 border-b border-navy/10">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-center font-sans font-bold text-3xl md:text-4xl text-navy mb-12">
+            Infrastructure
           </h2>
-        </div>
-        <div className="grid lg:grid-cols-3 gap-6">
-          {/* List */}
-          <div className="space-y-2">
-            {facilities.map((f, i) => (
-              <button
-                key={i}
-                onClick={() => setActive(i)}
-                className={`w-full text-left flex items-center gap-4 p-4 rounded-xl transition-all ${active === i ? "bg-navy text-white shadow-lg" : "bg-white hover:bg-cream border border-navy/5"}`}
-              >
-                <f.icon
-                  className="w-5 h-5 text-gold flex-shrink-0"
-                  strokeWidth={2}
-                />
-                <div>
-                  <div
-                    className={`font-sans font-600 text-sm ${active === i ? "text-white" : "text-navy"}`}
-                  >
+          <div className="grid lg:grid-cols-3 gap-6">
+            
+            {/* List */}
+            <div className="space-y-3">
+              {facilities.map((f, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  className={`w-full text-left flex items-center gap-4 p-5 transition-colors border-2 ${active === i ? "bg-navy border-navy text-white" : "bg-navy/5 border-navy/5 hover:border-navy text-navy"}`}
+                >
+                  <f.icon
+                    className={`w-6 h-6 flex-shrink-0 ${active === i ? "text-white" : "text-navy"}`}
+                    strokeWidth={1.5}
+                  />
+                  <div className={`font-sans font-bold text-[15px] tracking-wide ${active === i ? "text-white" : "text-navy"}`}>
                     {f.title}
                   </div>
-                </div>
-                {active === i && (
-                  <svg
-                    className="w-4 h-4 text-gold ml-auto"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                )}
-              </button>
-            ))}
-          </div>
+                  {active === i && (
+                    <ArrowRight className="w-5 h-5 ml-auto text-white" strokeWidth={2} />
+                  )}
+                </button>
+              ))}
+            </div>
 
-          {/* Detail */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl overflow-hidden border border-navy/5 h-full">
-              <div className="relative h-72">
-                <img
-                  key={active}
-                  src={facilities[active].img}
-                  alt={facilities[active].title}
-                  className="w-full h-full object-cover transition-all duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/50 to-transparent" />
-                <div className="absolute bottom-5 left-6 flex items-center gap-2">
-                  <ActiveIcon className="w-6 h-6 text-gold" strokeWidth={2} />
-                  <h3 className="font-serif text-2xl text-white font-600">
-                    {facilities[active].title}
-                  </h3>
+            {/* Detail */}
+            <div className="lg:col-span-2">
+              <div className="bg-navy/5 border-2 border-navy/10 flex flex-col h-full">
+                <div className="h-80 w-full overflow-hidden border-b-2 border-navy/10">
+                  <img
+                    key={active}
+                    src={facilities[active].img}
+                    alt={facilities[active].title}
+                    className="w-full h-full object-cover animate-fade-in"
+                  />
                 </div>
-              </div>
-              <div className="p-8">
-                <p className="text-muted font-sans leading-relaxed text-base">
-                  {facilities[active].desc}
-                </p>
-                <div className="mt-6 flex gap-3">
-                  <Link to="/admissions" className="btn-primary text-sm">
-                    Apply to Join
-                  </Link>
-                  <Link to="/contact" className="btn-outline-dark text-sm">
-                    Book a Campus Visit
-                  </Link>
+                <div className="p-8 md:p-12 flex-grow flex flex-col justify-center bg-white">
+                  <div className="flex items-center gap-4 mb-4 text-navy">
+                    <h3 className="font-sans font-bold text-3xl">
+                      {facilities[active].title}
+                    </h3>
+                  </div>
+                  <p className="text-navy/80 font-sans text-lg leading-relaxed mb-8">
+                    {facilities[active].desc}
+                  </p>
                 </div>
               </div>
             </div>
+            
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Safety */}
-      <div className="bg-white py-20">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* ── SAFETY ── */}
+      <section className="bg-navy/5 py-24 px-6 md:px-12 border-b border-navy/10">
+        <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="section-label">Your Safety Matters</div>
-              <h2 className="section-heading mb-6">
-                A campus where you feel <em className="font-light">at home</em>
+              <h2 className="font-sans font-bold text-3xl md:text-4xl text-navy mb-6">
+                Your Safety Matters
               </h2>
-              <p className="text-muted font-sans leading-relaxed mb-8">
-                We understand that parents and students want to feel completely
-                safe. Our campus is designed with safety-first infrastructure,
-                professional staff, and responsive systems.
+              <p className="text-navy/80 font-sans text-lg leading-relaxed mb-10">
+                We understand that parents and students want to feel completely safe. Our campus is designed with safety-first infrastructure, professional staff, and highly responsive systems.
               </p>
-              <ul className="space-y-3">
+              <ul className="space-y-4">
                 {safety.map((s, i) => (
                   <li
                     key={i}
-                    className="flex items-center gap-3 text-sm font-sans text-navy/80"
+                    className="flex items-center gap-4 font-sans font-bold text-[15px] text-navy"
                   >
-                    <span className="w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex-shrink-0 flex items-center justify-center">
+                    <span className="w-6 h-6 border-2 border-navy flex-shrink-0 flex items-center justify-center">
                       <svg
-                        className="w-3 h-3"
+                        className="w-4 h-4 text-navy"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -214,7 +193,7 @@ export default function Campus() {
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
-                          strokeWidth={2.5}
+                          strokeWidth={3}
                           d="M5 13l4 4L19 7"
                         />
                       </svg>
@@ -224,90 +203,60 @@ export default function Campus() {
                 ))}
               </ul>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-6">
               <img
                 src="https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=600"
-                alt=""
-                className="rounded-2xl h-56 w-full object-cover"
+                alt="Campus Safety 1"
+                className="w-full h-64 object-cover shadow-lg"
               />
               <img
                 src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=600"
-                alt=""
-                className="rounded-2xl h-56 w-full object-cover mt-8"
+                alt="Campus Safety 2"
+                className="w-full h-64 object-cover shadow-lg mt-12"
               />
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Location */}
-      <div className="bg-cream py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-navy rounded-3xl p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10">
-            <div>
-              <div className="text-gold text-xs font-sans tracking-[0.2em] uppercase mb-3">
-                Location
-              </div>
-              <h2 className="font-serif text-3xl md:text-4xl text-white mb-4">
-                Right in the heart of
-                <br />
-                <em>Anna Nagar, Chennai</em>
+      {/* ── LOCATION ── */}
+      <section className="bg-white py-24 px-6 md:px-12">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-navy p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 border-4 border-navy/10 shadow-2xl">
+            <div className="flex-1">
+              <h2 className="font-sans font-bold text-4xl text-white mb-6">
+                Right in the heart of Anna Nagar
               </h2>
-              <p className="text-white/50 font-sans mb-6">
-                AI, II Street, 9th Main Road, Anna Nagar, Chennai – 600 040
-                <br />5 min from Anna Nagar Tower Metro Station
+              <p className="text-white/80 font-sans text-lg mb-8 leading-relaxed max-w-lg">
+                AI, II Street, 9th Main Road, Anna Nagar, Chennai – 600 040<br />
+                <span className="font-bold">5 min from Anna Nagar Tower Metro Station</span>
               </p>
               <a
                 href="https://maps.google.com/?q=Dr+Vikram+Agarwal+College+of+Arts+and+Science+Chennai"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-gold text-white px-6 py-3 rounded-full text-sm font-sans font-600 hover:bg-gold-dark transition-all"
+                className="bg-white text-navy px-8 py-4 font-sans font-bold text-sm inline-flex items-center gap-3 hover:bg-cream transition-colors"
               >
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                </svg>
                 Open in Google Maps
+                <ArrowRight className="w-5 h-5 rounded-full border border-navy p-0.5" />
               </a>
             </div>
-            <div className="w-full md:w-80 h-48 bg-white/10 rounded-2xl flex items-center justify-center">
-              <div className="text-center text-white/40 font-sans text-sm">
-                <svg
-                  className="w-10 h-10 mx-auto mb-2 text-white/20"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-                  />
-                </svg>
-                Interactive map
-                <br />
-                loads on site
-              </div>
+            <div className="w-full md:w-96 h-64 border-2 border-white/20 bg-navy-light">
+              <iframe
+                title="Campus Location Map"
+                src="https://maps.google.com/maps?q=Dr+Vikram+Agarwal+College+of+Arts+and+Science+Chennai&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
     </div>
   );
 }
