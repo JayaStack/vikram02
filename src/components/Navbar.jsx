@@ -19,28 +19,16 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === "/";
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     setMenuOpen(false);
   }, [location.pathname]);
 
-  const navBg =
-    scrolled || !isHome
-      ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-cream"
-      : "bg-transparent";
-
-  const textColor = scrolled || !isHome ? "text-navy" : "text-white";
-  const logoColor = scrolled || !isHome ? "text-navy" : "text-white";
+  const navBg = "bg-white/95 backdrop-blur-md shadow-sm border-b border-cream";
+  const textColor = "text-navy";
+  const logoColor = "text-navy";
 
   return (
     <header
@@ -62,7 +50,7 @@ export default function Navbar() {
                 {COLLEGE_NAME}
               </div>
               <div
-                className={`hidden sm:block font-sans text-[10px] tracking-[0.15em] uppercase transition-colors max-w-[220px] truncate ${scrolled || !isHome ? "text-gold" : "text-white/70"}`}
+                className="hidden sm:block font-sans text-[10px] tracking-[0.15em] uppercase transition-colors max-w-[220px] truncate text-gold"
               >
                 Arts and Science
               </div>
@@ -139,7 +127,7 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled || !isHome ? "text-navy hover:bg-cream" : "text-white hover:bg-white/10"}`}
+            className="lg:hidden p-2 rounded-lg transition-colors text-navy hover:bg-cream"
             aria-label="Toggle menu"
           >
             {menuOpen ? (
