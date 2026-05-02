@@ -77,9 +77,30 @@ function useCountUp(end, duration = 2000) {
 
 /* ── data ── */
 const stats = [
-  { value: "3,200+", label: "Students Enrolled", icon: GraduationCap, img: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=600" },
-  { value: "94%", label: "Placement Rate", icon: Briefcase, img: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600" },
-  { value: "250+", label: "Recruiter Partners", icon: Building2, img: "https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=600" },
+  { 
+    value: "3,200+", 
+    label: "Students Enrolled", 
+    icon: GraduationCap, 
+    img: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=600",
+    description: "Of our research has been assessed to be 'world leading' or 'internationally excellent' in the Research Excellence Framework",
+    moreInfo: "Our research-intensive environment ensures that students are at the forefront of discovery. We collaborate with global partners to solve real-world problems, from climate change to public health."
+  },
+  { 
+    value: "94%", 
+    label: "Placement Rate", 
+    icon: Briefcase, 
+    img: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?q=80&w=600",
+    description: `${COLLEGE_NAME} is ranked 74th in the world and top 10 in all major league tables.`,
+    moreInfo: "Our graduates are highly sought after by top employers worldwide. We provide extensive career support, including internships, networking events, and one-on-one coaching to ensure our students are job-ready."
+  },
+  { 
+    value: "250+", 
+    label: "Recruiter Partners", 
+    icon: Building2, 
+    img: "https://images.unsplash.com/photo-1529390079861-591de354faf5?q=80&w=600",
+    description: "in the region by top 100 graduate employers",
+    moreInfo: "We maintain strong relationships with over 250 leading companies across various industries. These partnerships provide our students with exclusive access to job opportunities, projects, and mentorship."
+  },
 ];
 
 const campusCards = [
@@ -108,6 +129,11 @@ const campusCards = [
 /* ── component ── */
 export default function Home() {
   useScrollReveal();
+  const [expanded, setExpanded] = useState({});
+
+  const toggleExpand = (i) => {
+    setExpanded(prev => ({ ...prev, [i]: !prev[i] }));
+  };
 
   return (
     <div className="overflow-x-hidden font-sans">
@@ -152,28 +178,37 @@ export default function Home() {
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {stats.map((stat, i) => (
-              <div key={i} className="flex flex-col group cursor-pointer border border-navy/5 hover:shadow-lg transition-shadow">
+              <div 
+                key={i} 
+                className="flex flex-col border border-navy/5 hover:shadow-lg transition-all duration-300 bg-navy"
+              >
                 <div className="h-48 w-full overflow-hidden">
                   <img
                     src={stat.img}
                     alt={stat.label}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   />
                 </div>
-                <div className="bg-navy text-white p-8 flex-grow flex flex-col justify-center">
+                <div className="text-white p-8 flex-grow flex flex-col justify-center">
                   <div className="text-6xl font-bold font-sans mb-6 tracking-tighter">
                     {stat.value}
                   </div>
-                  <p className="text-sm font-sans text-white leading-relaxed">
-                    {stat.label === "Students Enrolled"
-                      ? "Of our research has been assessed to be 'world leading' or 'internationally excellent' in the Research Excellence Framework"
-                      : stat.label === "Placement Rate"
-                      ? `${COLLEGE_NAME} is ranked 74th in the world and top 10 in all major league tables.`
-                      : "in the region by top 100 graduate employers"}
-                  </p>
-                  <div className="mt-4 text-xs underline underline-offset-4 text-white/70">
-                    (Read more)
+                  <div className="space-y-4">
+                    <p className="text-sm font-sans text-white leading-relaxed">
+                      {stat.description}
+                    </p>
+                    {expanded[i] && (
+                      <p className="text-sm font-sans text-white/70 leading-relaxed animate-fade-in border-t border-white/10 pt-4">
+                        {stat.moreInfo}
+                      </p>
+                    )}
                   </div>
+                  <button 
+                    onClick={() => toggleExpand(i)}
+                    className="mt-6 text-xs underline underline-offset-4 text-white/50 hover:text-white transition-colors self-start uppercase tracking-widest font-bold"
+                  >
+                    ({expanded[i] ? "Read less" : "Read more"})
+                  </button>
                 </div>
               </div>
             ))}
